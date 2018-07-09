@@ -1,3 +1,12 @@
 <p>Add to Collection</p>
 <button mat-fab routerLink="/collection/new"><mat-icon>add</mat-icon></button>
 
+<div class='collection-container'>
+  <div *ngFor='let game of collection' class="game-container">
+      <p class='mat-typography'>{{game.name}}</p>
+      <div class='game-image-container'>
+        <img src={{game.thumbnail}} />
+      </div>
+  </div>
+</div>
+

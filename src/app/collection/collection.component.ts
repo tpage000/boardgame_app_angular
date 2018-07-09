@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CollectionService } from './collection.service';
 
 @Component({
   selector: 'app-collection',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionComponent implements OnInit {
 
-  constructor() { }
+  collection;
+
+  constructor(private collectionService: CollectionService) { }
 
   ngOnInit() {
+    this.collectionService.getCollection()
+      .subscribe(res => {
+        this.collection = res;
+      })
   }
 
 }

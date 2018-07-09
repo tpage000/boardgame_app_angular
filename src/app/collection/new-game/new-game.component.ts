@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CollectionService } from '../collection.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-game',
@@ -15,7 +16,10 @@ export class NewGameComponent implements OnInit {
 
   gameResult;
 
-  constructor(private collectionService: CollectionService) { }
+  constructor(
+    private collectionService: CollectionService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -28,19 +32,17 @@ export class NewGameComponent implements OnInit {
 
   getGameByBGGId() {
     let id = this.bggIdControl.value;
-    console.log(id);
     this.collectionService.getGameByBGGId(id)
       .subscribe(res => {
-        console.log(res);
         this.gameResult = res;
-      }
+      });
   }
 
   addToCollection() {
     let game = this.gameResult;
     this.collectionService.addToCollection(game)
       .subscribe(res => {
-        console.log(res);
-      })
+        this.router.navigate(['/collection']);
+      });
   }
 }
