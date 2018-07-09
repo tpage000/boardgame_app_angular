@@ -1,0 +1,32 @@
+<div class='container'>
+  <form [formGroup]="registrationForm" (ngSubmit)='submitRegistration()'>
+    <mat-radio-group formControlName='usertype'>
+      <mat-radio-button value="policyowner">Policy Owner</mat-radio-button>
+      <mat-radio-button value="adjuster">Adjuster</mat-radio-button>
+      <mat-radio-button value="admin">Admin</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+      <input matInput placeholder='username' formControlName='username' required>
+      <mat-error *ngIf="username.invalid">
+        {{ getError('username') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder='email' formControlName='email' required>
+      <mat-error *ngIf="email.invalid">
+        {{ getError('email') }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder='password' formControlName='password' [type]='password' required>
+      <mat-error *ngIf="password.invalid">
+        {{ getError('password') }}
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</div>

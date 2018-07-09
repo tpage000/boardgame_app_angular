@@ -1,0 +1,34 @@
+<main>
+<form (ngSubmit)="searchForGame()" class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Search for a title on boardgamegeek" matInput 
+    [formControl]="myControl">
+    <!-- <mat-autocomplete #auto="matAutocomplete"> -->
+    <!--   <mat-option *ngFor="let option of filteredOptions | async" [value]="option"> -->
+    <!--     {{option}} -->
+    <!--   </mat-option> -->
+    <!-- </mat-autocomplete> -->
+  </mat-form-field>
+
+  <button mat-button type="submit">Search</button>
+</form>
+
+<p>or</p>
+
+<form (ngSubmit)="getGameByBGGId()" class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Enter a boardgamegeek game id" matInput 
+    [formControl]="bggIdControl">
+  </mat-form-field>
+
+  <button mat-button type="submit">Enter</button>
+</form>
+
+<div *ngIf="gameResult" matTooltip="CLICK TO ADD THIS AMAZING GAME" class='game-result'
+  (click)="addToCollection()">
+  <p class='mat-typography'>{{gameResult.name}} {{gameResult.yearPublished}}</p>
+  <div class='result-image-container'>
+    <img src={{gameResult.image}} />
+  </div>
+</div>
+</main>
