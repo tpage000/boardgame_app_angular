@@ -13,7 +13,7 @@ export class CollectionService {
   constructor(private http: HttpClient) { }
 
   getCollection() {
-    return this.http.get(`${env.baseUrl}/games`);
+    return this.http.get(`${env.baseUrl}/games`)
   }
 
   addToCollection(game) {

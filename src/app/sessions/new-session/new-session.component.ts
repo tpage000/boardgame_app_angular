@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {Observable, Subject, from, of} from 'rxjs';
+import {map, mergeMap, startWith} from 'rxjs/operators';
+import { CollectionService } from '../../collection/collection.service';
 
 @Component({
   selector: 'app-new-session',
@@ -12,16 +13,26 @@ export class NewSessionComponent implements OnInit {
 
   myControl = new FormControl();
 
-  options: string[] = ['One', 'Two', 'Three'];
+  options;
 
   filteredOptions: Observable<string[]>;
 
+  constructor(
+    private collectionService: CollectionService
+  ) {}
+
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
+    this.collectionService.getCollection()
+      .subscribe(res => {
+        this.options = res;
+        let gameNames = this.options.map(({ name }) => name)
+        this.options = gameNames;
+        this.filteredOptions = this.myControl.valueChanges
+          .pipe(
+            startWith(''),
+            map(value => this._filter(value))
+          );
+      })
   }
 
   private _filter(value: string): string[] {
