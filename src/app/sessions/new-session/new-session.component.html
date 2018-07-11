@@ -1,19 +1,19 @@
 <main>
 <form class="example-form" (ngSubmit)="submitSession()">
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="example-full-width" appearance='outline'>
     <input type="text" placeholder="Choose a game from your collection" matInput 
     [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)='logChoice()'>
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  <p>or</p>
+  <p class='or'><small class='mat-typography'>or</small></p>
 
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="example-full-width" appearance='outline'>
     <input type="text" placeholder="Search for a title on boardgamegeek" 
            #searchBox
            matInput 
@@ -21,7 +21,7 @@
            [matAutocomplete]="searchAuto" 
            (keyup)="search(searchBox.value)">
 
-    <mat-autocomplete #searchAuto="matAutocomplete">
+    <mat-autocomplete #searchAuto="matAutocomplete" (optionSelected)='logSearch()'>
       <mat-option *ngFor="let option of searchOptions | async" [value]="option.name">
         {{option.name}}
       </mat-option>

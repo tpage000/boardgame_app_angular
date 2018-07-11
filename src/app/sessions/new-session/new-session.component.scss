@@ -4,8 +4,13 @@ main {
   flex-direction: column;
 }
 .example-form {
+  margin: 30px 0px 0px 0px;
   min-width: 100px;
-  max-width: 400px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   // border: 1px solid red;
   width: 100%;
 }
@@ -13,6 +18,10 @@ main {
 .example-full-width {
   // border: 1px solid green;
   width: 70%;
+}
+
+.or {
+  margin: -20px 0px 0px 0px;
 }
 
 .game-result {

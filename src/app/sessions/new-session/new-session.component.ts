@@ -60,9 +60,16 @@ export class NewSessionComponent implements OnInit {
   }
 
   submitSession() {
-    console.log('HOI')
     console.log(this.myControl.value);
     console.log(this.searchControl.value);
+  }
+
+  logChoice() {
+    console.log(this.myControl.value)
+  }
+
+  logSearch() {
+    console.log(this.searchControl.value)
   }
 }
 
