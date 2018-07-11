@@ -1,4 +1,6 @@
-<form class="example-form" (ng-submit)="submitSession()">
+<main>
+<form class="example-form" (ngSubmit)="submitSession()">
+
   <mat-form-field class="example-full-width">
     <input type="text" placeholder="Choose a game from your collection" matInput 
     [formControl]="myControl" [matAutocomplete]="auto">
@@ -12,17 +14,22 @@
   <p>or</p>
 
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Search for a title on boardgamegeek" matInput 
-    [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
+    <input type="text" placeholder="Search for a title on boardgamegeek" 
+           #searchBox
+           matInput 
+           [formControl]="searchControl" 
+           [matAutocomplete]="searchAuto" 
+           (keyup)="search(searchBox.value)">
+
+    <mat-autocomplete #searchAuto="matAutocomplete">
+      <mat-option *ngFor="let option of searchOptions | async" [value]="option.name">
+        {{option.name}}
       </mat-option>
     </mat-autocomplete>
+
   </mat-form-field>
 
   <button mat-button type="submit">Submit Session</button>
 </form>
 
-<!-- <h3>OR</h3> -->
-
+</main>

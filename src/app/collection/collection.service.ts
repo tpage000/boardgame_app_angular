@@ -24,8 +24,27 @@ export class CollectionService {
     return this.http.get(`${env.baseUrl}/games/query/${id}`)
   }
 
-  searchForGame(title: string) {
-    // if (!title.trim()) return of([]);
-    return this.http.get(`${env.baseUrl}/games/search?title=${title}`);
+  searchForGame(title) {
+    if (!title.trim()) return of([]);
+    return this.http.get(`${env.baseUrl}/games/search?title=${title}`)
+      .pipe(
+        tap(res => this.log(res)),
+        catchError(this.handleError('search', []))
+      );
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+ 
+      console.error(error); // log to console instead
+ 
+      this.log(`${operation} failed: ${error.message}`);
+ 
+      return of(result as T);
+    };
+  }
+ 
+  private log(message) {
+    console.warn('Log: ', message);
   }
 }
