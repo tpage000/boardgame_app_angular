@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
   MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, 
   MatTreeModule, MatToolbarModule, MatFormFieldModule, MatInputModule, 
-  MatRadioModule, MatAutocompleteModule, MatTooltipModule
+  MatRadioModule, MatAutocompleteModule, MatTooltipModule, MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -57,6 +57,8 @@ import { NewGameComponent } from './collection/new-game/new-game.component';
     MatRadioModule,
     MatAutocompleteModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
   ],

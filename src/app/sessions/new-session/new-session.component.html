@@ -31,22 +31,29 @@
     <div *ngFor='let result of gameResults' class='added-player-info'>
       <div class='added-player added-player-name'>{{ result.player.info }}</div>
       <div class='added-player added-player-score'>{{ result.score }}</div>
+      <div class='added-player remove-player'><mat-icon>remove</mat-icon></div>
     </div>
   </div>
 
   <div class='add-player-container'>
     <mat-form-field appearance='fill' class='add-result-field player-field'>
-      <input type='text' placeholder='Add player' matInput [formControl]='playerNameControl' >
+      <input type='text' placeholder='Add player' matInput [formControl]='playerNameControl'>
     </mat-form-field>
 
     <mat-form-field appearance='fill' class='add-result-field score-field'>
-      <input type='number' placeholder='Score' matInput [formControl]='scoreControl' >
+      <input type='number' placeholder='Score' matInput [formControl]='scoreControl'>
     </mat-form-field>
 
     <button type="button" (click)='addGameResult()' mat-flat-button color='accent' class='add-result-button'>
       <mat-icon>add</mat-icon>
     </button>
   </div>
+
+	<mat-form-field appearance='outline' class='add-date'>
+		<input matInput [matDatepicker]="picker" placeholder="Choose a date">
+		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+		<mat-datepicker #picker></mat-datepicker>
+	</mat-form-field>
 
   <button mat-button type="submit">Submit Session</button>
 </form>

@@ -21,11 +21,11 @@ export class NewSessionComponent implements OnInit {
 
   scoreControl = new FormControl();
 
-  options;
-
-  private searchTerms = new Subject();
+  options: any;
 
   filteredOptions: Observable<string[]>;
+
+  searchTerms = new Subject();
 
   searchOptions: any;
 
@@ -84,7 +84,8 @@ export class NewSessionComponent implements OnInit {
     player.info = this.playerNameControl.value;
     let score = this.scoreControl.value;
     this.gameResults.push({ player, score });
-    console.log(this.gameResults);
+    this.playerNameControl.reset();
+    this.scoreControl.reset();
   }
 }
 
