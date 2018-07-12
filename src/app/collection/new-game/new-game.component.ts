@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CollectionService } from '../collection.service';
 import { Router } from '@angular/router';
+import { Observable, Subject, from, of } from 'rxjs';
+import { 
+  map, tap, mergeMap, startWith, debounceTime, distinctUntilChanged, switchMap 
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-new-game',
@@ -12,7 +16,13 @@ export class NewGameComponent implements OnInit {
 
   myControl = new FormControl();
 
+  searchControl = new FormControl();
+
   bggIdControl = new FormControl();
+
+  searchTerms = new Subject();
+
+  searchOptions: Observable<any>;
 
   gameResult;
 
@@ -22,16 +32,23 @@ export class NewGameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // autocomplete game search with delayed http requests
+    this.searchOptions = this.searchTerms.pipe(
+      debounceTime(300), 
+      distinctUntilChanged(), 
+      switchMap(term => this.collectionService.searchForGame(term))
+    );
   }
 
-  searchForGame() {
-    let title = this.myControl.value;
-    this.collectionService.searchForGame(title)
-      .subscribe(res => console.log(res));
+  setBGGId(bggId) {
+    
   }
 
-  getGameByBGGId() {
-    let id = this.bggIdControl.value;
+  search(term) {
+    this.searchTerms.next(term);
+  }
+
+  getGameByBGGId(id) {
     this.collectionService.getGameByBGGId(id)
       .subscribe(res => {
         this.gameResult = res;
