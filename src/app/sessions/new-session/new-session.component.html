@@ -1,6 +1,5 @@
 <main>
 <form class="example-form" (ngSubmit)="submitSession()">
-
   <mat-form-field class="example-full-width" appearance='outline'>
     <input type="text" placeholder="Choose a game from your collection" matInput 
     [formControl]="myControl" [matAutocomplete]="auto">
@@ -26,8 +25,28 @@
         {{option.name}}
       </mat-option>
     </mat-autocomplete>
-
   </mat-form-field>
+
+  <div *ngIf='gameResults.length > 0' class='added-players'>
+    <div *ngFor='let result of gameResults' class='added-player-info'>
+      <div class='added-player added-player-name'>{{ result.player.info }}</div>
+      <div class='added-player added-player-score'>{{ result.score }}</div>
+    </div>
+  </div>
+
+  <div class='add-player-container'>
+    <mat-form-field appearance='fill' class='add-result-field player-field'>
+      <input type='text' placeholder='Add player' matInput [formControl]='playerNameControl' >
+    </mat-form-field>
+
+    <mat-form-field appearance='fill' class='add-result-field score-field'>
+      <input type='number' placeholder='Score' matInput [formControl]='scoreControl' >
+    </mat-form-field>
+
+    <button type="button" (click)='addGameResult()' mat-flat-button color='accent' class='add-result-button'>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
   <button mat-button type="submit">Submit Session</button>
 </form>

@@ -17,6 +17,10 @@ export class NewSessionComponent implements OnInit {
 
   searchControl = new FormControl();
 
+  playerNameControl = new FormControl();
+
+  scoreControl = new FormControl();
+
   options;
 
   private searchTerms = new Subject();
@@ -24,6 +28,8 @@ export class NewSessionComponent implements OnInit {
   filteredOptions: Observable<string[]>;
 
   searchOptions: any;
+
+  gameResults = [];
 
   constructor(
     private collectionService: CollectionService
@@ -70,6 +76,15 @@ export class NewSessionComponent implements OnInit {
 
   logSearch() {
     console.log(this.searchControl.value)
+  }
+
+  addGameResult() {
+    let player = { kind: '', info: '' };
+    player.kind = 'Guest';
+    player.info = this.playerNameControl.value;
+    let score = this.scoreControl.value;
+    this.gameResults.push({ player, score });
+    console.log(this.gameResults);
   }
 }
 

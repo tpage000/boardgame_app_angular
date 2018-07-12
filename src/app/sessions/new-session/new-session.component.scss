@@ -55,3 +55,47 @@ main {
   width: 100%;
 }
 
+.add-player-container {
+  display: flex;
+  flex-direction: row;
+  .add-result-field {
+    margin: 10px;
+    height: 30px;
+  }
+  .player-field {
+
+  }
+  .score-field {
+    width: 80px;
+  }
+  .add-result-button {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 60px;
+    width: 40px;
+  }
+}
+
+.added-players {
+  .added-player-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .added-player {
+      background-color: lightgrey;
+      height: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+    .added-player-name {
+      width: 202px;
+      margin-left: -96px;
+    }
+    .added-player-score {
+      width: 80px;
+      margin-left: 22px;
+    }
+  }
+}
