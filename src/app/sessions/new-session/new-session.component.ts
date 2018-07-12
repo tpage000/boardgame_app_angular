@@ -21,13 +21,19 @@ export class NewSessionComponent implements OnInit {
 
   scoreControl = new FormControl();
 
+  dateControl = new FormControl(new Date());
+
+  id: number;
+
+  bggId: number;
+
   options: any;
 
   filteredOptions: Observable<string[]>;
 
   searchTerms = new Subject();
 
-  searchOptions: any;
+  searchOptions: Observable<any>;
 
   gameResults = [];
 
@@ -40,8 +46,6 @@ export class NewSessionComponent implements OnInit {
     this.collectionService.getCollection()
       .subscribe(res => {
         this.options = res;
-        let gameNames = this.options.map(({ name }) => name);
-        this.options = gameNames;
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
           map(value => this._filter(value))
@@ -56,26 +60,24 @@ export class NewSessionComponent implements OnInit {
   }
   
   private _filter(value: string): string[] {
-      const filterValue = value.toLowerCase();
-
-      return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    const filterValue = value.toLowerCase();
+    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
   search(term) {
     this.searchTerms.next(term);
   }
 
-  submitSession() {
-    console.log(this.myControl.value);
-    console.log(this.searchControl.value);
+  setId(id) {
+    this.id = id;
+    this.searchControl.reset();
+    this.bggId = null;
   }
 
-  logChoice() {
-    console.log(this.myControl.value)
-  }
-
-  logSearch() {
-    console.log(this.searchControl.value)
+  setBGGId(bggId) {
+    this.bggId = bggId;
+    this.myControl.reset(); // this causes toLowerCase() filter error
+    this.id = null;
   }
 
   addGameResult() {
@@ -87,5 +89,20 @@ export class NewSessionComponent implements OnInit {
     this.playerNameControl.reset();
     this.scoreControl.reset();
   }
+
+  submitSession() {
+    if (this.id) {
+      let game = this.id;
+      let gameresults = this.gameResults;
+      let date = this.dateControl.value;
+      let data = { game, date, gameresults };
+      console.log(data);
+    } else if (this.bggId) {
+      // add the game to collection
+    } else {
+      console.log('No game chosen')
+    }
+  } 
+
 }
 
