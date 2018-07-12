@@ -40,10 +40,6 @@ export class NewGameComponent implements OnInit {
     );
   }
 
-  setBGGId(bggId) {
-    
-  }
-
   search(term) {
     this.searchTerms.next(term);
   }
