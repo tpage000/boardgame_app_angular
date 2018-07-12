@@ -99,6 +99,7 @@ export class NewSessionComponent implements OnInit {
       console.log(data);
     } else if (this.bggId) {
       // add the game to collection
+      console.log('get game for bggId:', this.bggId);
     } else {
       console.log('No game chosen')
     }

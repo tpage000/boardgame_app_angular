@@ -1,5 +1,7 @@
-<p>Add to Collection</p>
-<button mat-fab routerLink="/collection/new"><mat-icon>add</mat-icon></button>
+<div class='add-controls' routerLink="/collection/new">
+  <button mat-fab color='accent' class='add-button'><mat-icon>add</mat-icon></button>
+  <p class='mat-typography'>Add to Collection</p>
+</div>
 
 <div class='collection-container'>
   <div *ngFor='let game of collection' class="game-container">
