@@ -1,5 +1,6 @@
 <main>
 <form class="example-form" (ngSubmit)="submitSession()">
+  <!-- CHOOSE GAME FROM COLLECTION -->
   <mat-form-field class="example-full-width" appearance='outline'>
     <input type="text" placeholder="Choose a game from your collection" matInput 
     [formControl]="myControl" [matAutocomplete]="auto">
@@ -12,6 +13,7 @@
 
   <p class='or'><small class='mat-typography'>or</small></p>
 
+  <!-- SEARCH FOR GAME ON BGG -->
   <mat-form-field class="example-full-width" appearance='outline'>
     <input type="text" placeholder="Search for a title on boardgamegeek" 
            #searchBox
@@ -19,7 +21,6 @@
            [formControl]="searchControl" 
            [matAutocomplete]="searchAuto" 
            (keyup)="search(searchBox.value)">
-
     <mat-autocomplete #searchAuto="matAutocomplete">
       <mat-option *ngFor="let option of searchOptions | async" [value]="option.name" (click)='setBGGId(option.id)'>
         {{option.name}}
@@ -27,18 +28,27 @@
     </mat-autocomplete>
   </mat-form-field>
 
+  <!-- PLAYERS AND SCORES -->
   <div *ngIf='gameResults.length > 0' class='added-players'>
     <div *ngFor='let result of gameResults' class='added-player-info'>
-      <div class='added-player added-player-name'>{{ result.player.info }}</div>
+      <div class='added-player added-player-name'>{{ result.player.username }}</div>
       <div class='added-player added-player-score'>{{ result.score }}</div>
       <div class='added-player remove-player'><mat-icon>remove</mat-icon></div>
     </div>
   </div>
 
+  <!-- ADD PLAYERS AND SCORES -->
   <div class='add-player-container'>
     <mat-form-field appearance='fill' class='add-result-field player-field'>
-      <input type='text' placeholder='Add player' matInput [formControl]='playerNameControl'>
+      <input type='text' placeholder='Add player' matInput [matAutocomplete]="autoPlayer"
+      [formControl]='playerNameControl'>
     </mat-form-field>
+    <mat-autocomplete #autoPlayer="matAutocomplete">
+      <mat-option *ngFor="let player of filteredPlayers | async" [value]="player.username" 
+        (click)='setPlayer(player)'>
+        <img src={{player.avatar}} class='user-icon'/> <span class='txt-option'>{{player.username}}</span>
+      </mat-option>
+    </mat-autocomplete>
 
     <mat-form-field appearance='fill' class='add-result-field score-field'>
       <input type='number' placeholder='Score' matInput [formControl]='scoreControl'>
@@ -49,6 +59,7 @@
     </button>
   </div>
 
+  <!-- DATE -->
 	<mat-form-field appearance='outline' class='add-date'>
 		<input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]='dateControl'>
 		<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

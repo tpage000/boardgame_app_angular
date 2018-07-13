@@ -1,10 +1,12 @@
 <nav>
   <mat-toolbar color='primary'>
     <button mat-button routerLink='/sessions'>Sessions</button>
-    <button mat-button routerLink='/friends'>Friends</button>
+    <button mat-button routerLink='/players'>Players</button>
     <button mat-button routerLink='/collection'>Collection</button>
     <button mat-button routerLink='/stats'>Stats</button>
-    <button mat-button routerLink='/account'>O</button>
+    <button mat-button routerLink='/account'>
+      <mat-icon class='account-icon'>account_circle</mat-icon>
+    </button>
   </mat-toolbar>
 </nav>
 <router-outlet></router-outlet>

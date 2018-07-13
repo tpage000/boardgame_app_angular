@@ -10,7 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
   MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, 
   MatTreeModule, MatToolbarModule, MatFormFieldModule, MatInputModule, 
-  MatRadioModule, MatAutocompleteModule, MatTooltipModule, MatDatepickerModule, MatNativeDateModule
+  MatRadioModule, MatAutocompleteModule, MatTooltipModule, MatDatepickerModule, 
+  MatNativeDateModule, MatListModule
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,6 +27,7 @@ import { StatsComponent } from './stats/stats.component';
 import { NewSessionComponent } from './sessions/new-session/new-session.component';
 import { NewCollectionComponent } from './collection/new-collection/new-collection.component';
 import { NewGameComponent } from './collection/new-game/new-game.component';
+import { PlayersComponent } from './players/players.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { NewGameComponent } from './collection/new-game/new-game.component';
     StatsComponent,
     NewSessionComponent,
     NewCollectionComponent,
-    NewGameComponent
+    NewGameComponent,
+    PlayersComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { NewGameComponent } from './collection/new-game/new-game.component';
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatListModule,
     FormsModule,
     ReactiveFormsModule,
   ],

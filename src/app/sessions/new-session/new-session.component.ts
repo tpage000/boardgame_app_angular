@@ -5,6 +5,7 @@ import {
   map, tap, mergeMap, startWith, debounceTime, distinctUntilChanged, switchMap 
 } from 'rxjs/operators';
 import { CollectionService } from '../../collection/collection.service';
+import { PlayersService } from '../../players/players.service';
 
 @Component({
   selector: 'app-new-session',
@@ -37,8 +38,15 @@ export class NewSessionComponent implements OnInit {
 
   gameResults = [];
 
+  players;
+
+  filteredPlayers;
+
+  chosenPlayer;
+
   constructor(
-    private collectionService: CollectionService
+    private collectionService: CollectionService,
+    private playersService: PlayersService
   ) {}
 
   ngOnInit() {
@@ -57,11 +65,25 @@ export class NewSessionComponent implements OnInit {
       distinctUntilChanged(), 
       switchMap(term => this.collectionService.searchForGame(term))
     );
+    // autocomplete players with friends and guests
+    this.playersService.getFriendsAndGuestsAndSelf()
+      .subscribe(res => {
+        this.players = res;
+        this.filteredPlayers = this.playerNameControl.valueChanges.pipe(
+          startWith(''),
+          map(value => this._playerFilter(value))
+        );
+      });
   }
   
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+  private _playerFilter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.players.filter(player => player.username.toLowerCase().includes(filterValue));
   }
 
   search(term) {
@@ -80,13 +102,26 @@ export class NewSessionComponent implements OnInit {
     this.id = null;
   }
 
+  setPlayer(player) {
+    this.chosenPlayer = player;
+  }
+
   addGameResult() {
-    let player = { kind: '', info: '' };
-    player.kind = 'Guest';
-    player.info = this.playerNameControl.value;
+    let player = { kind: '', info: '', username: '', avatar: '' };
+    if (this.players.find(player => player.username == this.playerNameControl.value)) {
+      player.kind = this.chosenPlayer.kind;
+      player.info = this.chosenPlayer.id;
+      player.username = this.chosenPlayer.username;
+      player.avatar = this.chosenPlayer.avatar;
+    } else {
+      player.kind = 'Guest';
+      player.info = null;
+      player.username = this.playerNameControl.value;
+      player.avatar = null;
+    }
     let score = this.scoreControl.value;
     this.gameResults.push({ player, score });
-    this.playerNameControl.reset();
+    // this.playerNameControl.reset();
     this.scoreControl.reset();
   }
 
