@@ -15,7 +15,6 @@ export class SessionsComponent implements OnInit {
   ngOnInit() {
     this.sessionsService.getSessions()
       .subscribe(res => {
-        console.log(res);
         this.sessions = res;
       });
   }

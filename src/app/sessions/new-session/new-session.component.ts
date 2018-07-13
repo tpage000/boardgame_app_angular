@@ -102,7 +102,7 @@ export class NewSessionComponent implements OnInit {
 
   setBGGId(bggId) {
     this.bggId = bggId;
-    this.myControl.reset(); // this causes toLowerCase() filter error
+    this.myControl.patchValue(''); // this causes toLowerCase() filter error
     this.id = null;
   }
 
@@ -126,6 +126,7 @@ export class NewSessionComponent implements OnInit {
     let score = this.scoreControl.value;
     this.gameResults.push({ player, score });
     // this.playerNameControl.reset();
+    this.playerNameControl.patchValue('');
     this.scoreControl.reset();
   }
 
@@ -138,7 +139,6 @@ export class NewSessionComponent implements OnInit {
       console.log(data);
       this.sessionsService.addSession(data)
         .subscribe(res => {
-          console.log(res);
           this.router.navigate(['/sessions']);
         })
     } else if (this.bggId) {
