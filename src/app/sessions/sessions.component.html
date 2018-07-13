@@ -1,30 +1,40 @@
-<div class='add-controls' routerLink="/sessions/new">
-  <button mat-fab color='accent' class='add-button'><mat-icon>add</mat-icon></button>
+<div class='add-controls'>
+  <button routerLink="/sessions/new" mat-fab color='accent' class='add-button'>
+    <mat-icon>add</mat-icon>
+  </button>
   <p class='mat-typography'>New Session</p>
 </div>
 
 <div class='sessions-container'>
   <div *ngFor='let session of sessions' class="session-container">
-      <h1 class='mat-h1 title'>{{session.game.name}}</h1>
-      <p class='mat-typography'>{{session.date | date}}</p>
+      <p class='mat-typography date'>{{session.date | date}}</p>
+      <h3 class='mat-h3 title'>
+        {{
+          (session.game.name.length > 25) 
+          ? 
+          (session.game.name | slice:0:25) + '..'
+          :
+          (session.game.name) 
+         }}
+      </h3>
       <div class='game-image-container'>
         <img src={{session.game.thumbnail}} />
       </div>
       <div class='results-container'>
-        <mat-list>
-          <mat-list-item *ngFor="let result of session.gameresults" class='result'>
-            <img matListAvatar src="{{result.player.info.avatar}}" alt="...">
-            <h3 matLine class="username"> {{result.player.info.username}} </h3>
-            <h3 matLine> {{result.score }} </h3>
-          </mat-list-item>
-        </mat-list>
+        <div *ngFor='let result of session.gameresults' class='result'>
+          <img src='{{result.player.info.avatar}}' />
+          <p class='username mat-typography'>{{ result.player.info.username }}</p>
+          <p class='score mat-typography'>{{ result.score }}</p>
+        </div>
+        <!-- <mat-list> -->
+        <!--   <mat-list-item *ngFor="let result of session.gameresults" class='result'> -->
+        <!--     <img matListAvatar src="{{result.player.info.avatar}}" alt="..."> -->
+        <!--     <h3 matLine class="username"> {{result.player.info.username}} </h3> -->
+        <!--     <h3 class="score" matLine> {{result.score }} </h3> -->
+        <!--   </mat-list-item> -->
+        <!-- </mat-list> -->
       </div>
 
-        <!-- <div *ngFor='let result of session.gameresults' class='result'> -->
-        <!--   <img src='{{result.player.info.avatar}}' /> -->
-        <!--   <p>{{ result.player.info.username }}</p> -->
-        <!--   <p>{{ result.score }}</p> -->
-        <!-- </div> -->
   </div>
 </div>
 

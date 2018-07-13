@@ -1,14 +1,25 @@
-<div class='add-controls' routerLink="/collection/new">
-  <button mat-fab color='accent' class='add-button'><mat-icon>add</mat-icon></button>
+<div class='add-controls' >
+  <button routerLink="/collection/new" mat-fab color='accent' class='add-button'>
+    <mat-icon>add</mat-icon>
+  </button>
   <p class='mat-typography'>Add to Collection</p>
 </div>
 
 <div class='collection-container'>
   <div *ngFor='let game of collection' class="game-container">
-      <p class='mat-typography'>{{game.name}}</p>
+      <p class='mat-typography'>
+        {{
+          (game.name.length > 25) 
+          ? 
+          (game.name | slice:0:25) + '..'
+          :
+          (game.name) 
+         }}
+       </p>
       <div class='game-image-container'>
         <img src={{game.thumbnail}} />
       </div>
+      <!-- <p class='mat-typography'>Plays: {{game.plays}}</p> -->
   </div>
 </div>
 

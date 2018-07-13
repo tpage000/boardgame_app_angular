@@ -31,7 +31,8 @@
   display: flex;
   flex-direction: row;
   margin-left: 20px;
-  cursor: pointer;
+  // border: 1px solid red;
+  width: 180px;
 }
 
 .add-button {
@@ -42,4 +43,5 @@
   height: 40px;
   width: 40px;
   margin-right: 10px;
+  cursor: pointer;
 }
