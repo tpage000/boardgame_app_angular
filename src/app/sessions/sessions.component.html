@@ -3,3 +3,30 @@
   <p class='mat-typography'>New Session</p>
 </div>
 
+<div class='sessions-container'>
+  <div *ngFor='let session of sessions' class="session-container">
+      <h1 class='mat-h1 title'>{{session.game.name}}</h1>
+      <p class='mat-typography'>{{session.date | date}}</p>
+      <div class='game-image-container'>
+        <img src={{session.game.thumbnail}} />
+      </div>
+      <div class='results-container'>
+        <mat-list>
+          <mat-list-item *ngFor="let result of session.gameresults" class='result'>
+            <img matListAvatar src="{{result.player.info.avatar}}" alt="...">
+            <h3 matLine class="username"> {{result.player.info.username}} </h3>
+            <h3 matLine> {{result.score }} </h3>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+        <!-- <div *ngFor='let result of session.gameresults' class='result'> -->
+        <!--   <img src='{{result.player.info.avatar}}' /> -->
+        <!--   <p>{{ result.player.info.username }}</p> -->
+        <!--   <p>{{ result.score }}</p> -->
+        <!-- </div> -->
+  </div>
+</div>
+
+
+

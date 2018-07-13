@@ -1,3 +1,32 @@
+.sessions-container {
+  // display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // justify-content: space-around;
+  flex-wrap: wrap;
+  // border: 1px solid red;
+}
+
+.session-container {
+  border: 3px solid whitesmoke;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 30px 0px; 
+  margin: 5px;
+}
+
+.session-container:hover {
+  background-color: #F7F7F7;
+  // background-color: pink;
+}
+
+.game-image-container {
+  max-height: 250px;
+}
+
 .add-controls {
   display: flex;
   flex-direction: row;
@@ -15,3 +44,21 @@
   margin-right: 10px;
 }
 
+.sessions-container {
+  .title {
+    margin-top: 20px;
+  }
+}
+.results-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  // border: 1px solid green;
+}
+
+.result {
+  .username {
+    font-weight: 500;
+  }
+}

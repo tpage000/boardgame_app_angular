@@ -6,6 +6,8 @@ import {
 } from 'rxjs/operators';
 import { CollectionService } from '../../collection/collection.service';
 import { PlayersService } from '../../players/players.service';
+import { SessionsService } from '../sessions.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-session',
@@ -46,7 +48,9 @@ export class NewSessionComponent implements OnInit {
 
   constructor(
     private collectionService: CollectionService,
-    private playersService: PlayersService
+    private playersService: PlayersService,
+    private sessionsService: SessionsService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -132,6 +136,11 @@ export class NewSessionComponent implements OnInit {
       let date = this.dateControl.value;
       let data = { game, date, gameresults };
       console.log(data);
+      this.sessionsService.addSession(data)
+        .subscribe(res => {
+          console.log(res);
+          this.router.navigate(['/sessions']);
+        })
     } else if (this.bggId) {
       // add the game to collection
       console.log('get game for bggId:', this.bggId);
