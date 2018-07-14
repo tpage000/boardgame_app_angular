@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CollectionComponent } from './collection/collection.component';
 import { SessionsComponent } from './sessions/sessions.component';
-import { FriendsComponent } from './friends/friends.component';
 import { StatsComponent } from './stats/stats.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { PlayersComponent } from './players/players.component';
@@ -19,10 +18,6 @@ const routes: Routes = [
   {
     path: 'sessions',
     component: SessionsComponent
-  },
-  {
-    path: 'players/friends',
-    component: FriendsComponent
   },
   {
     path: 'stats',

@@ -10,13 +10,6 @@ const httpOptions = {
   })
 };
 
-interface CurrentUser {
-  id: string;
-  token: string;
-  avatar: string;
-  username: string;
-}
-
 @Injectable({
   providedIn: 'root'
 })

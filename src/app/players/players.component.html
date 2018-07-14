@@ -1,42 +1,49 @@
 <main>
-<section>
-  <h3 class='mat-h1'>Friend activity</h3>
-</section>
 
-<section>
-  <h3 class='mat-h1'>Your friends</h3>
-  <div class='all-friends'>
+<div class='left'>
+  <section>
+    <h3 class='mat-h1'>Your friends</h3>
+    <div class='all-friends'>
       <div *ngFor="let friend of friends" class='friend'>
         <img src="{{friend.avatar}}" alt="..." class='avatar'>
         <h3 class='mat-h3'> {{friend.username}}</h3>
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<section>
-  <h3 class='mat-h1'>Find friends</h3>
-  <form class='find-friends-form' (ngSubmit)='submitAddFriend()'>
-    <mat-form-field class="form-field" appearance='outline'>
-      <input type="text" placeholder="Enter registered friend's username" matInput 
-      [formControl]="findFriendControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let user of filteredUsers | async" [value]="user.username" 
-          (click)='selectUser(user)' class='friend-options'>
-          <img src={{user.avatar}} class='user-icon'/> <span class='txt-option'>{{user.username}}</span>
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <button mat-flat-button color='primary' type='submit' class='find-friend-submit'>Add Friend</button>
-  </form>
-</section>
-
-<section>
-  <h3 class='mat-h1'>Your guests</h3>
-  <div class='all-guests'>
+  <section>
+    <h3 class='mat-h1'>Your guests</h3>
+    <div class='all-guests'>
       <div *ngFor="let guest of guests" class='guest'>
         <img src="{{guest.avatar}}" alt="..." class='avatar'>
         <h3 class='mat-h3'> {{guest.username}} </h3>
       </div>
-  </div>
-</section>
+    </div>
+  </section>
+</div>
+
+<div class='right'>
+  <section>
+    <h3 class='mat-h1'>Friend activity</h3>
+  </section>
+
+  <section>
+    <h3 class='mat-h1'>Find friends</h3>
+    <form class='find-friends-form' (ngSubmit)='submitAddFriend()'>
+      <mat-form-field class="form-field" appearance='outline'>
+        <input type="text" placeholder="Enter registered friend's username" matInput 
+                           [formControl]="findFriendControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let user of filteredUsers | async" [value]="user.username" 
+                           (click)='selectUser(user)' class='friend-options'>
+            <img src={{user.avatar}} class='user-icon'/> <span class='txt-option'>{{user.username}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-flat-button color='primary' type='submit' class='find-friend-submit'>Add Friend</button>
+    </form>
+  </section>
+
+</div>
+
 </main>

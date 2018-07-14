@@ -102,7 +102,7 @@ export class NewSessionComponent implements OnInit {
 
   setBGGId(bggId) {
     this.bggId = bggId;
-    this.myControl.patchValue(''); // this causes toLowerCase() filter error
+    this.myControl.patchValue('');
     this.id = null;
   }
 
@@ -130,6 +130,7 @@ export class NewSessionComponent implements OnInit {
   }
 
   submitSession() {
+    // Todo: check if guest is impromptu guest, and add to guests if so
     if (this.id) {
       let game = this.id;
       let gameresults = this.gameResults;
@@ -141,7 +142,7 @@ export class NewSessionComponent implements OnInit {
           this.router.navigate(['/sessions']);
         })
     } else if (this.bggId) {
-      // add the game to collection
+      // Todo: add the game to collection
       console.log('get game for bggId:', this.bggId);
     } else {
       console.log('No game chosen')

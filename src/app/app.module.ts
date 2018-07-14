@@ -21,11 +21,9 @@ import { MainInterceptor } from './_interceptors/main.interceptor';
 
 import { SessionsComponent } from './sessions/sessions.component';
 import { AccountsComponent } from './accounts/accounts.component';
-import { FriendsComponent } from './friends/friends.component';
 import { CollectionComponent } from './collection/collection.component';
 import { StatsComponent } from './stats/stats.component';
 import { NewSessionComponent } from './sessions/new-session/new-session.component';
-import { NewCollectionComponent } from './collection/new-collection/new-collection.component';
 import { NewGameComponent } from './collection/new-game/new-game.component';
 import { PlayersComponent } from './players/players.component';
 
@@ -34,11 +32,9 @@ import { PlayersComponent } from './players/players.component';
     AppComponent,
     SessionsComponent,
     AccountsComponent,
-    FriendsComponent,
     CollectionComponent,
     StatsComponent,
     NewSessionComponent,
-    NewCollectionComponent,
     NewGameComponent,
     PlayersComponent
   ],

@@ -60,7 +60,7 @@
   </div>
 
   <div *ngIf='authService.isLoggedIn()'>
-    <!-- <button mat-button (click)='logout()' class='logout'>Log out</button> -->
+    <button mat-button (click)='logout()' class='logout'>Log out</button>
     <div class='user-info'>
       <h2 class='mat-h2'>Hi {{user.username}}</h2>
       <img src='{{ user.avatar }}' class='main-avatar-img'/>
