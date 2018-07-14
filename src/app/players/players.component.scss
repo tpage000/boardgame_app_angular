@@ -3,8 +3,28 @@
 main {
   padding: 20px;
 }
+
+section {
+}
+
+.all-friends, .all-guests {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  height: 60px; width: 60px;
+  border-radius: $radius;
+}
+
+.friend, .guest {
+  margin: 10px;
+  h3 {
+    text-align: center;
+  }
+}
+
 .find-friends-form {
-  margin: 0px 0px -30px 0px;
   min-width: 300px;
   max-width: 400px;
   display: flex;
@@ -31,10 +51,3 @@ main {
 .txt-option {
 }
 
-section {
-  margin: 0px 0px 40px 0px;
-}
-
-.avatar {
-  border-radius: $radius;
-}

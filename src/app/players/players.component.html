@@ -6,9 +6,9 @@
 <section>
   <h3 class='mat-h1'>Your friends</h3>
   <div class='all-friends'>
-      <div *ngFor="let friend of friends">
+      <div *ngFor="let friend of friends" class='friend'>
         <img src="{{friend.avatar}}" alt="..." class='avatar'>
-        <h3> {{friend.username}} </h3>
+        <h3 class='mat-h3'> {{friend.username}}</h3>
       </div>
   </div>
 </section>
@@ -33,9 +33,9 @@
 <section>
   <h3 class='mat-h1'>Your guests</h3>
   <div class='all-guests'>
-      <div *ngFor="let guest of guests">
+      <div *ngFor="let guest of guests" class='guest'>
         <img src="{{guest.avatar}}" alt="..." class='avatar'>
-        <h3> {{guest.username}} </h3>
+        <h3 class='mat-h3'> {{guest.username}} </h3>
       </div>
   </div>
 </section>
