@@ -22,7 +22,9 @@ export class AccountsComponent implements OnInit {
 
   register = false;
 
-  user:any;
+  user:any = {
+    username: ''
+  };
 
   avatars = AVATARS;
 
@@ -44,11 +46,12 @@ export class AccountsComponent implements OnInit {
       'password': new FormControl('', [Validators.required])
     })
     // this.user = this.authService.currentUser;
-    this.userService.getSelf()
-      .subscribe(res => {
-        console.log(res);
-        this.user = res;
-      })
+    if (this.authService.isLoggedIn()) {
+      this.userService.getSelf()
+        .subscribe(res => {
+          this.user = res;
+        })
+    }
   }
 
   get registerUsername() { return this.registrationForm.get('username'); }
@@ -80,9 +83,17 @@ export class AccountsComponent implements OnInit {
   }
 
   updateAvatar(avatar) {
-    this.userService.updateUser({ avatar })
+    this.userService.updateUser(this.user._id, { avatar })
       .subscribe(res => {
         this.user = res;
       });
+  }
+
+  logout() {
+    this.authService.logout()
+      .subscribe(res => {
+        console.log(res);
+        // window.location.href = '/account';
+      })
   }
 }

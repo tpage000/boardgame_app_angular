@@ -9,16 +9,18 @@ export class MainInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.authService.currentUser) {
-      let token = this.authService.currentUser.token;
+    let token = sessionStorage.getItem('token');
+
+    if (token) {
       let request = req.clone({
         setHeaders: {
           'x-access-token': token 
         }
       });
       return next.handle(request)
-
     }
+
+    // }
 
     return next.handle(req)
   }

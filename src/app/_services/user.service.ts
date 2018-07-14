@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
-import { catchError, retry, tap , map} from 'rxjs/operators';
+import { catchError, mergeMap, retry, tap , map} from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 import { AuthenticationService } from './authentication.service';
 
@@ -33,14 +33,9 @@ export class UserService {
       'Something bad happened; please try again later.');
   };
 
-  updateUser(data) {
-    let id = this.authService.currentUser.id;
+  updateUser(id, data) {
     return this.http.put(`${env.localBaseUrl}/users/${id}`, data, httpOptions)
       .pipe(
-        map(res => {
-          // this.authService.currentUser.avatar = res.avatar;
-          return res;
-        }),
         catchError(this.handleError)
       )
   }

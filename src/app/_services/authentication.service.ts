@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, Subject, throwError } from 'rxjs';
+import { of, Observable, Subject, throwError } from 'rxjs';
 import { catchError, retry, tap , map} from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 
@@ -22,13 +22,6 @@ interface CurrentUser {
 })
 export class AuthenticationService {
 
-  loggedIn: boolean;
-
-  currentUser = null;
-
-  // dev user
-  // currentUser:any = { id: 2, username: 'thom', avatar: '/assets/avatars/ocean.jpeg', token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDEwY2YyZDI2Zjg0ZGQ3NWNlNjYwZSIsInVzZXJuYW1lIjoidGhvbSIsImlhdCI6MTUzMTU0MzE5NCwiZXhwIjoxNTMyMTQ3OTk0fQ.H72dVFT-sm78hG2s9Heg1rjC9KG_rM25oLzB8dOrgbw" };
-
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
@@ -47,16 +40,20 @@ export class AuthenticationService {
     return this.http.post(`${env.localBaseUrl}/users/login`, data, httpOptions)
       .pipe(
         map(res => {
-          this.loggedIn = true;
-          this.currentUser = res;
-          // this.currentUser.id = res.id;
-          // this.currentUser.token = res.token;
-          // this.currentUser.username = res.username;
-          // this.currentUser.avatar = res.avatar;
+          sessionStorage.setItem('token', res['token']);
           return res;
         }),
         catchError(this.handleError)
       )
+  }
+
+  logout() {
+    sessionStorage.removeItem('token');
+    return of({ message: 'logged out' });
+  }
+
+  isLoggedIn() {
+    return sessionStorage.getItem('token');
   }
 }
 
