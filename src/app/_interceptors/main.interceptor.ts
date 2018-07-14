@@ -1,21 +1,25 @@
 import { Injectable, Injector } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const authReq = req.clone({ 
-      headers: req.headers.set(
-        "x-access-token", 
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDEwY2YyZDI2Zjg0ZGQ3NWNlNjYwZSIsInVzZXJuYW1lIjoidGhvbSIsImlhdCI6MTUzMTQzNDYyNCwiZXhwIjoxNTMyMDM5NDI0fQ.vUzKqS5W-C1pZ0x-vu1fgOWEFIIFBkaz8ANSOWnGQYk"
-      )
-    });
+    if (this.authService.currentUser) {
+      let token = this.authService.currentUser.token;
+      let request = req.clone({
+        setHeaders: {
+          'x-access-token': token 
+        }
+      });
+      return next.handle(request)
 
-    return next.handle(authReq)
+    }
+
+    return next.handle(req)
   }
 }
