@@ -1,6 +1,7 @@
 <div class='container'>
 
-  <div *ngIf='!user'>
+  <!-- <div *ngIf='!user'> -->
+  <div *ngIf='!authService.loggedIn'>
 
     <div *ngIf='!register' class='login'>
       <h2 class='mat-h2'>Log In</h2>
@@ -59,7 +60,8 @@
     </div>
   </div>
 
-  <div *ngIf='user'>
+  <!-- <div *ngIf='user'> -->
+  <div *ngIf='authService.loggedIn'>
     <div class='user-info'>
       <h2 class='mat-h2'>Hi {{user.username}}</h2>
       <img src='{{ user.avatar }}' class='main-avatar-img'/>
@@ -67,7 +69,9 @@
     <h4 class='mat-h4 avatar-title'>Avatars</h4>
     <div class='avatars'>
       <div *ngFor='let avatar of avatars' class='avatar'>
-        <img src='{{avatar}}' alt='{{avatar}}' class='avatar-img'/>
+        <img src='{{avatar}}' alt='{{avatar}}' class='avatar-img'
+          (click)='updateAvatar(avatar)'
+        />
       </div>
     </div>
   </div>

@@ -56,7 +56,7 @@ export class PlayersComponent implements OnInit {
 
   submitAddFriend() {
     if (this.newFriend) {
-      this.findFriendControl.reset();
+      this.findFriendControl.patchValue('');
       this.playersService.addToFriends(this.newFriend._id)
         .subscribe(res => {
           this.friends.push(this.newFriend);
