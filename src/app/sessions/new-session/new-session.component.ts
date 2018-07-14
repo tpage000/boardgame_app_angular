@@ -125,7 +125,6 @@ export class NewSessionComponent implements OnInit {
     }
     let score = this.scoreControl.value;
     this.gameResults.push({ player, score });
-    // this.playerNameControl.reset();
     this.playerNameControl.patchValue('');
     this.scoreControl.reset();
   }
