@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 main {
   padding: 20px;
 }
@@ -23,7 +25,7 @@ main {
   height: 30px; width: 30px;
   margin-top: 20px;
   margin-right: 10px;
-  border-radius: 50%;
+  border-radius: $radius;
 }
 
 .txt-option {
@@ -33,4 +35,6 @@ section {
   margin: 0px 0px 40px 0px;
 }
 
-
+.avatar {
+  border-radius: $radius;
+}

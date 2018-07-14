@@ -6,12 +6,10 @@
 <section>
   <h3 class='mat-h1'>Your friends</h3>
   <div class='all-friends'>
-    <mat-list>
-      <mat-list-item *ngFor="let friend of friends">
-        <img matListAvatar src="{{friend.avatar}}" alt="...">
-        <h3 matLine> {{friend.username}} </h3>
-      </mat-list-item>
-    </mat-list>
+      <div *ngFor="let friend of friends">
+        <img src="{{friend.avatar}}" alt="..." class='avatar'>
+        <h3> {{friend.username}} </h3>
+      </div>
   </div>
 </section>
 
@@ -35,12 +33,10 @@
 <section>
   <h3 class='mat-h1'>Your guests</h3>
   <div class='all-guests'>
-    <mat-list>
-      <mat-list-item *ngFor="let guest of guests">
-        <img matListAvatar src="{{guest.avatar}}" alt="...">
-        <h3 matLine> {{guest.username}} </h3>
-      </mat-list-item>
-    </mat-list>
+      <div *ngFor="let guest of guests">
+        <img src="{{guest.avatar}}" alt="..." class='avatar'>
+        <h3> {{guest.username}} </h3>
+      </div>
   </div>
 </section>
 </main>

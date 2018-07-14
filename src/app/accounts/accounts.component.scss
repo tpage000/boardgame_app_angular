@@ -1,3 +1,4 @@
+@import '../../sass/variables';
 
 .container {
   display: flex;
@@ -26,9 +27,20 @@ form > * {
 
 .avatar-img {
   height: 100px; width: 100px;
-  border-radius: 50%;
+  border-radius: $radius;
 }
 
 .avatar-img:hover {
   box-shadow: 0px 0px 40px 20px #0ff;
+}
+.user-info {
+  text-align: center;
+}
+.avatar-title {
+  margin-top: 40px;
+  text-align: center;
+}
+.main-avatar-img {
+  border-radius: $radius;
+  height: 140px; width: 140px;
 }

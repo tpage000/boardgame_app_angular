@@ -1,3 +1,5 @@
+@import '../../sass/variables';
+
 .sessions-container {
   display: flex;
   flex-direction: row;
@@ -68,7 +70,7 @@
     color: grey;
     img {
       width: 40px; height: 40px;
-      border-radius: 50%;
+      border-radius: $radius;
     }
     .username {
       margin-top: 6px;
