@@ -14,3 +14,21 @@ form > * {
   width: 300px;
 }
 
+.avatars {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  margin: 5px;
+}
+
+.avatar-img {
+  height: 100px; width: 100px;
+  border-radius: 50%;
+}
+
+.avatar-img:hover {
+  box-shadow: 0px 0px 40px 20px #0ff;
+}

@@ -18,7 +18,7 @@ export class AuthenticationService {
   // currentUser = null;
 
   // dev user
-  currentUser:any = { token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDEwY2YyZDI2Zjg0ZGQ3NWNlNjYwZSIsInVzZXJuYW1lIjoidGhvbSIsImlhdCI6MTUzMTU0MzE5NCwiZXhwIjoxNTMyMTQ3OTk0fQ.H72dVFT-sm78hG2s9Heg1rjC9KG_rM25oLzB8dOrgbw" };
+  currentUser:any = { id: 2, username: 'thom', avatar: '/assets/avatars/ocean.jpeg', token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDEwY2YyZDI2Zjg0ZGQ3NWNlNjYwZSIsInVzZXJuYW1lIjoidGhvbSIsImlhdCI6MTUzMTU0MzE5NCwiZXhwIjoxNTMyMTQ3OTk0fQ.H72dVFT-sm78hG2s9Heg1rjC9KG_rM25oLzB8dOrgbw" };
 
   constructor(private http: HttpClient) { }
 

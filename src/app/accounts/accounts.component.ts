@@ -6,6 +6,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { RegistrationService } from './registration.service';
 import { AuthenticationService } from '../_services/authentication.service';
 import { Router } from '@angular/router';
+import { AVATARS } from '../_constants/avatars';
 
 @Component({
   selector: 'app-accounts',
@@ -20,10 +21,14 @@ export class AccountsComponent implements OnInit {
 
   register = false;
 
+  user = true;
+
+  avatars = AVATARS;
+
   constructor(
     private registrationService: RegistrationService, 
     private router: Router,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
   ) { }
 
   ngOnInit(): void { 
@@ -36,6 +41,7 @@ export class AccountsComponent implements OnInit {
       'username': new FormControl('', [Validators.required]),
       'password': new FormControl('', [Validators.required])
     })
+    this.user = this.authService.currentUser;
   }
 
   get registerUsername() { return this.registrationForm.get('username'); }
@@ -52,8 +58,6 @@ export class AccountsComponent implements OnInit {
   }
 
   submitRegistration() {
-    console.log(this.registrationForm.status);
-    console.log(this.registrationForm.value);
     this.registrationService.register(this.registrationForm.value)
       .subscribe(data => {
         console.log(data);
@@ -62,8 +66,6 @@ export class AccountsComponent implements OnInit {
   }
   
   submitLogin() {
-    console.log(this.loginForm.status);
-    console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value)
       .subscribe(data => {
         this.router.navigate(['/sessions']);
