@@ -126,7 +126,8 @@ export class NewSessionComponent implements OnInit {
     this.scoreControl.reset();
   }
 
-  submitSession() {
+  submitSession($event) {
+    $event.preventDefault();
     // check if guest is impromptu (add to db if new)
     this.checkForNewGuests()
       .subscribe(newGuests => {

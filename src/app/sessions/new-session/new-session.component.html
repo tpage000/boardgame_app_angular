@@ -1,5 +1,5 @@
 <main>
-<form class="example-form" (ngSubmit)="submitSession()">
+<form class="example-form">
   <!-- CHOOSE GAME FROM COLLECTION -->
   <mat-form-field class="example-full-width" appearance='outline'>
     <input type="text" placeholder="Choose a game from your collection" matInput 
@@ -69,7 +69,7 @@
 		<mat-datepicker #picker></mat-datepicker>
 	</mat-form-field>
 
-  <button mat-button type="submit">Submit Session</button>
+  <button mat-button type="button" (click)='submitSession($event)'>Submit Session</button>
 </form>
 
 </main>
