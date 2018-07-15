@@ -37,7 +37,14 @@ export class PlayersService {
   }
 
   addToGuests(guest) {
+    // return of(guest);
     return this.http.post(`${env.baseUrl}/guests`, guest)
+  }
+
+  addMultipleGuests(guestList) {
+    if (guestList.length === 0) return of([])
+    let guestListCalls = guestList.map(guest => this.addToGuests(guest));
+    return forkJoin(guestListCalls)
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

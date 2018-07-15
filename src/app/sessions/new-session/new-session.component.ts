@@ -111,17 +111,14 @@ export class NewSessionComponent implements OnInit {
   }
 
   addGameResult() {
-    let player = { kind: '', info: '', username: '', avatar: '' };
+    let player = {};
     if (this.players.find(player => player.username == this.playerNameControl.value)) {
-      player.kind = this.chosenPlayer.kind;
-      player.info = this.chosenPlayer.id;
-      player.username = this.chosenPlayer.username;
-      player.avatar = this.chosenPlayer.avatar;
+      player['kind'] = this.chosenPlayer.kind;
+      player['info'] = this.chosenPlayer.id;
+      player['username'] = this.chosenPlayer.username;
+      player['avatar'] = this.chosenPlayer.avatar;
     } else {
-      player.kind = 'Guest';
-      player.info = null;
-      player.username = this.playerNameControl.value;
-      player.avatar = null;
+      player['username'] = this.playerNameControl.value;
     }
     let score = this.scoreControl.value;
     this.gameResults.push({ player, score });
@@ -130,24 +127,59 @@ export class NewSessionComponent implements OnInit {
   }
 
   submitSession() {
-    // Todo: check if guest is impromptu guest, and add to guests if so
-    if (this.id) {
-      let game = this.id;
-      let gameresults = this.gameResults;
-      let date = this.dateControl.value;
-      let data = { game, date, gameresults };
-      console.log(data);
-      this.sessionsService.addSession(data)
-        .subscribe(res => {
-          this.router.navigate(['/sessions']);
-        })
-    } else if (this.bggId) {
-      // Todo: add the game to collection
-      console.log('get game for bggId:', this.bggId);
-    } else {
-      console.log('No game chosen')
-    }
+    // check if guest is impromptu (add to db if new)
+    this.checkForNewGuests()
+      .subscribe(newGuests => {
+        let game = this.id;
+        let date = this.dateControl.value;
+        let gameresults;
+
+        newGuests.length > 0 
+        ? gameresults = this.packageGameResults(newGuests)
+        : gameresults = this.gameResults;
+
+        let fullData = { game, date, gameresults };
+
+        // if the game was added from the collection, it will have an id
+        if (this.id) {
+          this.sessionsService.addSession(fullData)
+            .subscribe(res => {
+              this.router.navigate(['/sessions']);
+            })
+        } else if (this.bggId) {
+          // Todo: add the game to collection
+          console.log('get game for bggId:', this.bggId);
+        } else {
+          console.log('No game chosen')
+        }
+      })
   } 
+
+  checkForNewGuests() {
+    let guestsToCreate = [];
+    for (let result of this.gameResults) {
+      if (!result.player.kind) guestsToCreate.push(result.player);
+    }
+    return this.playersService.addMultipleGuests(guestsToCreate)
+  }
+
+  packageGameResults(newGuests) {
+    return this.gameResults.map(result => {
+      newGuests.forEach(guest => {
+        if (!result.player.kind && (result.player.username === guest.username)) {
+          let constructedGuest = {
+            avatar: guest.avatar,
+            info: guest._id,
+            kind: guest.kind,
+            username: guest.username
+          }
+          result.player = constructedGuest;
+          return result;
+        }
+      })
+      return result;
+    })
+  }
 
 }
 
