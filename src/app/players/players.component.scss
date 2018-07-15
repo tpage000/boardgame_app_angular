@@ -23,6 +23,8 @@ h3 {
 .all-friends, .all-guests {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .avatar {
@@ -31,15 +33,18 @@ h3 {
 }
 
 .friend, .guest {
-  margin: 10px;
+  // margin: 10px;
+  width: 90px;
+  text-align: center;
   h3 {
     text-align: center;
   }
 }
 
 .find-friends-form {
-  min-width: 300px;
-  max-width: 400px;
+  // min-width: 300px;
+  // max-width: 400px;
+  width: 400px;
   display: flex;
   flex-direction: row;
   justify-content: center;
