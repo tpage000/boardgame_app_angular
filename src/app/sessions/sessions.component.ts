@@ -8,7 +8,7 @@ import { SessionsService } from './sessions.service';
 })
 export class SessionsComponent implements OnInit {
 
-  sessions;
+  sessions = [];
 
   constructor(private sessionsService: SessionsService) { }
 

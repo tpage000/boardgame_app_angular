@@ -13,6 +13,7 @@ export const AVATARS = [
   `${$}hypatia.jpeg`,
   `${$}kiwi.jpg`,
   `${$}magica.jpg`,
+  `${$}marjory.jpg`,
   `${$}max-headroom.jpg`,
   `${$}megatron.jpeg`,
   `${$}monster.png`,
