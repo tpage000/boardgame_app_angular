@@ -2,7 +2,7 @@
 
 <div class='left'>
   <section>
-    <h3 class='mat-h1'>Your friends</h3>
+    <h3 class='mat-h1'>Friends</h3>
     <div class='all-friends'>
       <div *ngFor="let friend of friends" class='friend'>
         <img src="{{friend.avatar}}" alt="..." class='avatar'>
@@ -12,7 +12,7 @@
   </section>
 
   <section>
-    <h3 class='mat-h1'>Your guests</h3>
+    <h3 class='mat-h1'>Guests</h3>
     <div class='all-guests'>
       <div *ngFor="let guest of guests" class='guest'>
         <img src="{{guest.avatar}}" alt="..." class='avatar'>
@@ -36,12 +36,12 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-      <button mat-flat-button color='primary' type='submit' class='find-friend-submit'>Add Friend</button>
+      <button mat-flat-button type='submit' class='find-friend-submit'>Add Friend</button>
     </form>
   </section>
 
   <section>
-    <h3 class='mat-h1'>Friend activity</h3>
+    <h3 class='mat-h1'>Activity</h3>
   </section>
 
 </div>

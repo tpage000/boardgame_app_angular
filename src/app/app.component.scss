@@ -1,5 +1,9 @@
+@import '../sass/variables';
+
 nav {
   mat-toolbar {
+    color: white;
+    background: $primary-color;
     display: flex;
     justify-content: space-around;
     button {
