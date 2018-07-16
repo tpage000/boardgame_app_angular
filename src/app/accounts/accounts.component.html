@@ -3,7 +3,7 @@
   <div *ngIf='!authService.isLoggedIn()'>
 
     <div *ngIf='!register' class='login'>
-      <h2 class='mat-h2'>Log In</h2>
+      <h1 class='mat-h1'>Log In</h1>
       <form [formGroup]="loginForm" (ngSubmit)='submitLogin()'>
         <mat-form-field>
           <input matInput placeholder='username' formControlName='username' required>
@@ -19,7 +19,7 @@
           </mat-error>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-button type="submit" class='submit'>Log In</button>
       </form>
       <p style='text-decoration: underline; cursor:pointer' (click)='register = true'>
       register
@@ -27,7 +27,7 @@
     </div>
 
     <div *ngIf='register' class='register'>
-      <h2 class='mat-h2'>Register</h2>
+      <h1 class='mat-h1'>Register</h1>
 
       <form [formGroup]="registrationForm" (ngSubmit)='submitRegistration()'>
         <mat-form-field>
@@ -51,7 +51,7 @@
           </mat-error>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit">Submit</button>
+        <button mat-button type="submit" class='submit'>Register</button>
       </form>
       <p style='text-decoration: underline; cursor:pointer' (click)='register = false'>
       back to login
@@ -59,10 +59,10 @@
     </div>
   </div>
 
-  <div *ngIf='authService.isLoggedIn()'>
+  <div *ngIf='authService.isLoggedIn()' >
     <button mat-button (click)='logout()' class='logout'>Log out</button>
     <div class='user-info'>
-      <h2 class='mat-h2'>Hi {{user.username}}</h2>
+      <h1 class='mat-h1'>Hi {{user.username}}</h1>
       <img src='{{ user.avatar }}' class='main-avatar-img'/>
     </div>
     <h4 class='mat-h4 avatar-title'>Avatars</h4>

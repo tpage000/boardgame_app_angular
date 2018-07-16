@@ -3,16 +3,40 @@
 .container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  color: $secondary-text-color; 
 }
 
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
-form > * {
+mat-form-field {
   width: 300px;
+}
+
+.submit {
+  color: white;
+  background: $primary-color;
+  width: 160px;
+}
+
+.logout {
+  position: absolute;
+  right: 30px;
+  // margin-top: 60px;
+}
+
+.user-info {
+  margin-top: 20px;
+  text-align: center;
 }
 
 .avatars {
@@ -33,20 +57,13 @@ form > * {
 .avatar-img:hover {
   box-shadow: 0px 0px 40px 20px #0ff;
 }
-.user-info {
-  text-align: center;
-}
+
 .avatar-title {
   margin-top: 40px;
   text-align: center;
 }
+
 .main-avatar-img {
   border-radius: $radius;
   height: 140px; width: 140px;
-}
-
-.logout {
-  // z-index: 3;
-  position: absolute;
-  right: 10px;
 }

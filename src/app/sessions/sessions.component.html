@@ -1,9 +1,12 @@
-<div class='add-controls'>
-  <button routerLink="/sessions/new" mat-fab class='add-button'>
+<header>
+  <button routerLink="/sessions/new" matTooltip="Add game results" 
+    mat-button class='add-button'>
     <mat-icon>add</mat-icon>
   </button>
-  <p class='mat-typography'>New Session</p>
-</div>
+  <h1 class='mat-h1'>Game results ({{sessions.length}} games)</h1>
+  <div class='spacer'></div>
+</header>
+
 
 <div class='sessions-container'>
   <div *ngFor='let session of sessions' class="session-container">
