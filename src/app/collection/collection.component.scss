@@ -33,7 +33,7 @@ header {
 }
 
 .game-container {
-  border: 3px solid whitesmoke;
+  // border: 3px solid whitesmoke;
   width: 220px;
   display: flex;
   flex-direction: column;
@@ -48,5 +48,8 @@ header {
 
 .game-image-container {
   max-height: 250px;
+  img {
+    border-radius: 3px;
+  }
 }
 
