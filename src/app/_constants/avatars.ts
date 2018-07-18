@@ -21,6 +21,7 @@ export const AVATARS = [
   `${$}ocean.jpeg`,
   `${$}pizza-rat.jpg`,
   `${$}red-yarn.jpg`,
+  `${$}rock.jpg`,
   `${$}sailboat.jpg`,
   `${$}samurai.jpg`,
   `${$}saul.jpg`,
