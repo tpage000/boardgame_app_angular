@@ -8,7 +8,7 @@ import { CollectionService } from './collection.service';
 })
 export class CollectionComponent implements OnInit {
 
-  collection;
+  collection:any =[];
 
   constructor(private collectionService: CollectionService) { }
 

@@ -69,10 +69,7 @@ export class AccountsComponent implements OnInit {
 
   submitRegistration() {
     this.registrationService.register(this.registrationForm.value)
-      .subscribe(data => {
-        console.log(data);
-        this.router.navigate(['/sessions']);
-      })
+      .subscribe(data => this.router.navigate(['/sessions']))
   }
   
   submitLogin() {

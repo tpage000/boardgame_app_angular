@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, map, tap } from 'rxjs/operators';
 import { environment as env } from '../../environments/environment';
 
 const httpOptions = {
@@ -32,6 +32,10 @@ export class RegistrationService {
   register(data) {
     return this.http.post(`${env.localBaseUrl}/users`, data, httpOptions)
       .pipe(
+        map(res => {
+          sessionStorage.setItem('token', res['token']);
+          return res;
+        }),
         catchError(this.handleError)
       )
   }
