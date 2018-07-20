@@ -1,12 +1,15 @@
 <main>
 
 <header>
+  <h1 class='mat-h1' routerLink="/collection/new" matTooltip="Add a game to your collection" 
+    mat-button>
+    Collection ({{collection.length}} games)
+  </h1>
   <button routerLink="/collection/new" matTooltip="Add a game to your collection" 
     mat-button class='add-button'>
-    <mat-icon>add</mat-icon>
+    <!-- <mat-icon>add</mat-icon> -->
+    New
   </button>
-  <h1 class='mat-h1'>Collection ({{collection.length}} games)</h1>
-  <div class='spacer'></div>
 </header>
 
 <div class='collection-container'>

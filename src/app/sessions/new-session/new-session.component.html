@@ -23,7 +23,7 @@
            (keyup)="search(searchBox.value)">
     <mat-autocomplete #searchAuto="matAutocomplete">
       <mat-option *ngFor="let option of searchOptions | async" [value]="option.name" (click)='setBGGId(option.id)'>
-        {{option.name}}
+        {{option.name}} ({{option.yearPublished}})
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

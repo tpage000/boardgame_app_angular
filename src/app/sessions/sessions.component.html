@@ -1,10 +1,13 @@
 <header>
+  <h1 class='mat-h1' routerLink="/sessions/new" matTooltip="Add game results" 
+    mat-button>
+    Game results ({{sessions.length}} games) 
+  </h1>
   <button routerLink="/sessions/new" matTooltip="Add game results" 
     mat-button class='add-button'>
-    <mat-icon>add</mat-icon>
+    <!-- <mat-icon>add</mat-icon> -->
+    New
   </button>
-  <h1 class='mat-h1'>Game results ({{sessions.length}} games)</h1>
-  <div class='spacer'></div>
 </header>
 
 <div class='sessions-container'>

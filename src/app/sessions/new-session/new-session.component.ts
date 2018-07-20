@@ -26,9 +26,9 @@ export class NewSessionComponent implements OnInit {
 
   dateControl = new FormControl(new Date());
 
-  id: number;
+  id: number; // set if user selects game from collection
 
-  bggId: number;
+  bggId: number; // set if user chooses game from bgg
 
   options: any;
 
@@ -90,16 +90,19 @@ export class NewSessionComponent implements OnInit {
     return this.players.filter(player => player.username.toLowerCase().includes(filterValue));
   }
 
+  // keyup when user searches for game on bgg
   search(term) {
     this.searchTerms.next(term);
   }
 
+  // when game from collection is selected, save the id
   setId(id) {
     this.id = id;
     this.searchControl.reset();
     this.bggId = null;
   }
 
+  // when game from bgg is chosen, save the id
   setBGGId(bggId) {
     this.bggId = bggId;
     this.myControl.patchValue('');
@@ -112,11 +115,13 @@ export class NewSessionComponent implements OnInit {
 
   addGameResult() {
     let player = {};
+    // player is either be a selected player ...
     if (this.players.find(player => player.username == this.playerNameControl.value)) {
       player['kind'] = this.chosenPlayer.kind;
       player['info'] = this.chosenPlayer.id;
       player['username'] = this.chosenPlayer.username;
       player['avatar'] = this.chosenPlayer.avatar;
+    // ... or player is to be created
     } else {
       player['username'] = this.playerNameControl.value;
     }
@@ -126,12 +131,10 @@ export class NewSessionComponent implements OnInit {
     this.scoreControl.reset();
   }
 
-  submitSession($event) {
-    $event.preventDefault();
+  submitSession() {
     // check if guest is impromptu (add to db if new)
     this.checkForNewGuests()
       .subscribe(newGuests => {
-        let game = this.id;
         let date = this.dateControl.value;
         let gameresults;
 
@@ -139,17 +142,32 @@ export class NewSessionComponent implements OnInit {
         ? gameresults = this.packageGameResults(newGuests)
         : gameresults = this.gameResults;
 
-        let fullData = { game, date, gameresults };
-
-        // if the game was added from the collection, it will have an id
+        // if the game was added from the collection, it will have an id,
+        // and the session with all data can be submitted
         if (this.id) {
+          let game = this.id;
+          let fullData = { game, date, gameresults };
           this.sessionsService.addSession(fullData)
             .subscribe(res => {
               this.router.navigate(['/sessions']);
             })
         } else if (this.bggId) {
-          // Todo: add the game to collection
-          console.log('get game for bggId:', this.bggId);
+        // if the game is added from bgg, it will not yet have an id,
+        // so the game must first be added to the collection before the session
+        // can be submitted
+          this.collectionService.getGameByBGGId(this.bggId)
+            .subscribe(bggGame => {
+              this.collectionService.addToCollection(bggGame)
+                .subscribe(addedGame => {
+                  let game = addedGame['_id']; 
+                  let fullData = { game, date, gameresults }
+                  this.sessionsService.addSession(fullData)
+                    .subscribe(res => {
+                      this.router.navigate(['/sessions'])
+                    })
+                })
+            })
+
         } else {
           console.log('No game chosen')
         }
