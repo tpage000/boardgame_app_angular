@@ -47,6 +47,10 @@ export class PlayersService {
     return forkJoin(guestListCalls)
   }
 
+  getOneFriend(id) {
+    return this.http.get(`${env.baseUrl}/friends/${id}`)
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
@@ -59,3 +63,4 @@ export class PlayersService {
     console.warn('Log: ', message);
   }
 }
+

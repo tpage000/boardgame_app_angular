@@ -1,0 +1,48 @@
+<main>
+  <h1 class='mat-h1'>
+    {{ friend.username }}'s latest sessions
+  </h1>
+<div class='sessions-container'>
+  <div *ngFor='let session of sessions' class="session-container">
+      <p class='mat-typography date'>{{session.date | date}}</p>
+      <h3 class='mat-h3 title'>
+        {{
+          (session.game.name.length > 25) 
+          ? 
+          (session.game.name | slice:0:25) + '..'
+          :
+          (session.game.name) 
+         }}
+      </h3>
+      <div class='game-image-container'>
+        <img src={{session.game.thumbnail}} />
+      </div>
+      <div class='results-container'>
+        <div *ngFor='let result of session.gameresults' class='result'>
+          <img src='{{result.player.info.avatar}}' />
+          <p class='username mat-typography'>{{ result.player.info.username }}</p>
+          <p class='score mat-typography'>{{ result.score }}</p>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <h1 class='mat-h1'>{{ friend.username }}'s latest games</h1>
+<div class='collection-container'>
+  <div *ngFor='let game of games' class="game-container">
+      <p class='mat-typography'>
+        {{
+          (game.name.length > 25) 
+          ? 
+          (game.name | slice:0:25) + '..'
+          :
+          (game.name) 
+         }}
+       </p>
+      <div class='game-image-container'>
+        <img src={{game.thumbnail}} />
+      </div>
+  </div>
+</div>
+
+</main>

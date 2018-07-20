@@ -26,6 +26,7 @@ import { StatsComponent } from './stats/stats.component';
 import { NewSessionComponent } from './sessions/new-session/new-session.component';
 import { NewGameComponent } from './collection/new-game/new-game.component';
 import { PlayersComponent } from './players/players.component';
+import { PlayersFriendComponent } from './players/players-friend/players-friend.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PlayersComponent } from './players/players.component';
     StatsComponent,
     NewSessionComponent,
     NewGameComponent,
-    PlayersComponent
+    PlayersComponent,
+    PlayersFriendComponent
   ],
   imports: [
     BrowserModule,

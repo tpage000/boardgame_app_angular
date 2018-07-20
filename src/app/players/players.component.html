@@ -4,7 +4,7 @@
   <section>
     <h3 class='mat-h1'>Friends</h3>
     <div class='all-friends'>
-      <div *ngFor="let friend of friends" class='friend'>
+      <div *ngFor="let friend of friends" routerLink='/players/{{friend._id}}' class='friend'>
         <img src="{{friend.avatar}}" alt="..." class='avatar'>
         <h3 class='mat-h3'> {{friend.username}}</h3>
       </div>

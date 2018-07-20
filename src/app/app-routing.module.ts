@@ -9,6 +9,7 @@ import { PlayersComponent } from './players/players.component';
 
 import { NewSessionComponent } from './sessions/new-session/new-session.component';
 import { NewGameComponent } from './collection/new-game/new-game.component';
+import { PlayersFriendComponent } from './players/players-friend/players-friend.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'players',
     component: PlayersComponent
+  },
+  {
+    path: 'players/:id',
+    component: PlayersFriendComponent
   }
 ];
 
