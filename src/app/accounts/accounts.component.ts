@@ -31,7 +31,7 @@ export class AccountsComponent implements OnInit {
   constructor(
     private registrationService: RegistrationService, 
     private router: Router,
-    private authService: AuthenticationService,
+    public authService: AuthenticationService,
     private userService: UserService
   ) { }
 

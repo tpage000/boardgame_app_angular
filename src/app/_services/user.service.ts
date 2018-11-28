@@ -34,14 +34,14 @@ export class UserService {
   };
 
   updateUser(id, data) {
-    return this.http.put(`${env.localBaseUrl}/users/${id}`, data, httpOptions)
+    return this.http.put(`${env.baseUrl}/users/${id}`, data, httpOptions)
       .pipe(
         catchError(this.handleError)
       )
   }
 
   getSelf() {
-    return this.http.get(`${env.localBaseUrl}/friends/self`)
+    return this.http.get(`${env.baseUrl}/friends/self`)
   }
 }
 
