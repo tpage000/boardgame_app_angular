@@ -13,6 +13,11 @@ import { PlayersFriendComponent } from './players/players-friend/players-friend.
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/sessions',
+    pathMatch: 'full'
+  },
+  {
     path: 'collection',
     component: CollectionComponent
   },
