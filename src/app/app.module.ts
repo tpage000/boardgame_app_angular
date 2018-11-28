@@ -27,6 +27,7 @@ import { NewSessionComponent } from './sessions/new-session/new-session.componen
 import { NewGameComponent } from './collection/new-game/new-game.component';
 import { PlayersComponent } from './players/players.component';
 import { PlayersFriendComponent } from './players/players-friend/players-friend.component';
+import { PieChartComponent } from './stats/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PlayersFriendComponent } from './players/players-friend/players-friend.
     NewSessionComponent,
     NewGameComponent,
     PlayersComponent,
-    PlayersFriendComponent
+    PlayersFriendComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,
