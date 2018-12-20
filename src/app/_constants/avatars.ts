@@ -30,3 +30,4 @@ export const AVATARS = [
   `${$}slimer.jpg`,
   `${$}xena.jpg`,
 ]
+

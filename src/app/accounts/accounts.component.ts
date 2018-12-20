@@ -69,7 +69,7 @@ export class AccountsComponent implements OnInit {
 
   submitRegistration() {
     this.registrationService.register(this.registrationForm.value)
-      .subscribe(data => this.router.navigate(['/sessions']))
+      .subscribe(data => window.location.href = '/account');
   }
   
   submitLogin() {
@@ -89,8 +89,9 @@ export class AccountsComponent implements OnInit {
   logout() {
     this.authService.logout()
       .subscribe(res => {
-        console.log(res);
-        // window.location.href = '/account';
+        // console.log(res);
+        // console.log(sessionStorage);
+        window.location.href = '/account';
       })
   }
 }

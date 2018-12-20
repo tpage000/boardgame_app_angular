@@ -10,6 +10,7 @@ export class MainInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     let token = sessionStorage.getItem('token');
+    // console.log('sending token...' , token);
 
     if (token) {
       let request = req.clone({
