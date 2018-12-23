@@ -39,7 +39,11 @@
     <div *ngFor='let result of gameResults' class='added-player-info'>
       <div class='added-player added-player-name'>{{ result.player.username }}</div>
       <div class='added-player added-player-score'>{{ result.score }}</div>
-      <div class='added-player remove-player'><mat-icon>remove</mat-icon></div>
+      <!-- <div class='added-player remove-player'><mat-icon>remove</mat-icon></div> -->
+      <button type="button" (click)='removeGameResult(result)' mat-flat-button 
+        class='added-player remove-player'>
+        <mat-icon>remove</mat-icon>
+      </button>
     </div>
   </div>
 
@@ -63,7 +67,8 @@
       <input type='number' placeholder='Score' matInput [formControl]='scoreControl'>
     </mat-form-field>
 
-    <button type="button" (click)='addGameResult()' mat-flat-button class='add-result-button'>
+    <button type="button" (click)='addGameResult()' mat-flat-button 
+      class='add-result-button'>
       <mat-icon>add</mat-icon>
     </button>
   </div>

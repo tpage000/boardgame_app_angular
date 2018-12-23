@@ -115,7 +115,7 @@ export class NewSessionComponent implements OnInit {
 
   addGameResult() {
     let player = {};
-    // player is either be a selected player ...
+    // player is either a selected player ...
     if (this.players.find(player => player.username == this.playerNameControl.value)) {
       player['kind'] = this.chosenPlayer.kind;
       player['info'] = this.chosenPlayer.id;
@@ -129,6 +129,13 @@ export class NewSessionComponent implements OnInit {
     this.gameResults.push({ player, score });
     this.playerNameControl.patchValue('');
     this.scoreControl.reset();
+  }
+
+  removeGameResult(result) {
+    let newResults = this.gameResults.filter(gameResult => {
+      return gameResult.player.username !== result.player.username;
+    });
+    this.gameResults = newResults;
   }
 
   submitSession() {

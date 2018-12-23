@@ -114,10 +114,13 @@ main {
     }
     .remove-player {
       width: 88px;
+      height: 60px;
       margin-left: 22px;
       background-color: lightblue;
       color: white;
       cursor: pointer;
+      line-height: 0px;
+      vertical-align: middle;
     }
   }
 }
