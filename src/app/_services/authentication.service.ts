@@ -25,8 +25,7 @@ export class AuthenticationService {
       console.log(error.status);
       console.log(error.message);
     }
-    return throwError(
-      'Something bad happened; please try again later.');
+    return throwError(error.error.message);
   };
 
   login(data) {

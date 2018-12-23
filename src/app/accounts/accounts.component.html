@@ -21,6 +21,9 @@
 
         <button mat-button type="submit" class='submit'>Log In</button>
       </form>
+
+      <h3 *ngIf="error" class='error mat-error mat-typography'>{{ error }}</h3>
+
       <p style='text-decoration: underline; cursor:pointer' (click)='register = true'>
       register
       </p>
@@ -53,6 +56,9 @@
 
         <button mat-button type="submit" class='submit'>Register</button>
       </form>
+      <h3 *ngIf="regError" class='error mat-error mat-typography'>
+        {{ regError }}
+      </h3>
       <p style='text-decoration: underline; cursor:pointer' (click)='register = false'>
       back to login
       </p>
