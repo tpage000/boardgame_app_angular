@@ -52,10 +52,9 @@ export class NewGameComponent implements OnInit {
   }
 
   addToCollection() {
-    let game = this.gameResult;
-    this.collectionService.addToCollection(game)
+    this.collectionService.addToCollection(this.gameResult)
       .subscribe(res => {
-        this.router.navigate(['/collection']);
+        this.router.navigate(['/games']);
       });
   }
 }

@@ -33,12 +33,15 @@
   <button mat-button type="submit">Enter</button>
 </form>
 
-<div *ngIf="gameResult" matTooltip="CLICK TO ADD THIS AMAZING GAME" class='game-result'
-  (click)="addToCollection()">
+<div *ngIf="gameResult" class='game-result' (click)="addToCollection()">
   <p class='mat-typography'>{{gameResult.name}} {{gameResult.yearPublished}}</p>
   <div class='result-image-container'>
     <img src={{gameResult.image}} />
   </div>
+  <button matTooltip="Add this game to your collection" 
+    mat-button class='add-button'>
+    Add
+  </button>
 </div>
 
 </main>
