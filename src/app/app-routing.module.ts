@@ -18,7 +18,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'collection',
+    path: 'games',
     component: CollectionComponent
   },
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
     component: NewSessionComponent
   },
   {
-    path: 'collection/new',
+    path: 'games/new',
     component: NewGameComponent
   },
   {

@@ -1,17 +1,43 @@
+@import '../../../sass/variables';
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px 10px 20px;
+  h1 {
+    margin-top: 15px;
+    color: $secondary-text-color; 
+  }
+}
+
 main {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.example-form {
+
+.form {
+  // border: 1px solid red;
   margin: 30px 0px 0px 0px;
   min-width: 100px;
   max-width: 600px;
   width: 100%;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: center;
+  // justify-content: center;
 }
 
-.example-full-width {
-  width: 70%;
+.title-form-field {
+  // border: 1px solid blue;
+  width: 100%;
+}
+
+.id-form-field {
+  // border: 1px solid blue;
+  width: 85%;
 }
 
 .or {
