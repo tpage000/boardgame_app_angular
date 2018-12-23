@@ -46,6 +46,8 @@ export class NewSessionComponent implements OnInit {
 
   chosenPlayer;
 
+  error: string = '';
+
   constructor(
     private collectionService: CollectionService,
     private playersService: PlayersService,
@@ -114,6 +116,7 @@ export class NewSessionComponent implements OnInit {
   }
 
   addGameResult() {
+    this.error = '';
     let player = {};
     // player is either a selected player ...
     if (this.players.find(player => player.username == this.playerNameControl.value)) {
@@ -125,13 +128,20 @@ export class NewSessionComponent implements OnInit {
     } else {
       player['username'] = this.playerNameControl.value;
     }
-    let score = this.scoreControl.value;
-    this.gameResults.push({ player, score });
+
+    // check if player is already added (disallow duplicates)
+    if (this.gameResults.find(gameResult => gameResult.player.username === player.username)) {
+      this.error = 'Duplicate username';
+    } else {
+      let score = this.scoreControl.value;
+      this.gameResults.push({ player, score });
+    }
     this.playerNameControl.patchValue('');
     this.scoreControl.reset();
   }
 
   removeGameResult(result) {
+    this.error = '';
     let newResults = this.gameResults.filter(gameResult => {
       return gameResult.player.username !== result.player.username;
     });

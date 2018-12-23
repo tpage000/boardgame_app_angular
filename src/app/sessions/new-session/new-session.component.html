@@ -62,11 +62,9 @@
         </span>
       </mat-option>
     </mat-autocomplete>
-
     <mat-form-field appearance='fill' class='add-result-field score-field'>
       <input type='number' placeholder='Score' matInput [formControl]='scoreControl'>
     </mat-form-field>
-
     <button type="button" (click)='addGameResult()' mat-flat-button 
       class='add-result-button'>
       <mat-icon>add</mat-icon>
@@ -82,5 +80,7 @@
 
   <button mat-button type="button" (click)='submitSession()'>Submit Session</button>
 </form>
+
+<h3 *ngIf="error" class='error mat-error mat-typography'>{{ error }}</h3>
 
 </main>
