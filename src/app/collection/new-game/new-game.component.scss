@@ -1,17 +1,43 @@
+@import '../../../sass/variables';
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px 10px 20px;
+  h1 {
+    margin-top: 15px;
+    color: $secondary-text-color; 
+  }
+}
+
 main {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.example-form {
+
+.form {
+  // border: 1px solid red;
   margin: 30px 0px 0px 0px;
   min-width: 100px;
   max-width: 600px;
   width: 100%;
+  // display: flex;
+  // flex-direction: row;
+  // align-items: center;
+  // justify-content: center;
 }
 
-.example-full-width {
-  width: 70%;
+.title-form-field {
+  // border: 1px solid blue;
+  width: 100%;
+}
+
+.id-form-field {
+  // border: 1px solid blue;
+  width: 85%;
 }
 
 .or {
@@ -25,19 +51,20 @@ main {
   align-items: center;
   justify-content: center;
   padding: 0px 0px 30px 0px; 
+  cursor: pointer;
 }
 
 .game-result:hover {
   background-color: #F7F7F7;
-    box-shadow:
-        inset 0 0 50px #fff,      /* inner white */
-        inset 20px 0 80px #f0f,   /* inner left magenta short */
-        inset -20px 0 80px #0ff,  /* inner right cyan short */
-        inset 20px 0 300px #f0f,  /* inner left magenta broad */
-        inset -20px 0 300px #0ff, /* inner right cyan broad */
-        0 0 50px #fff,            /* outer white */
-        -10px 0 80px #f0f,        /* outer left magenta */
-        10px 0 80px #0ff;         /* outer right cyan */
+    // box-shadow:
+    //     inset 0 0 50px #fff,      /* inner white */
+    //     inset 20px 0 80px #f0f,   /* inner left magenta short */
+    //     inset -20px 0 80px #0ff,  /* inner right cyan short */
+    //     inset 20px 0 300px #f0f,  /* inner left magenta broad */
+    //     inset -20px 0 300px #0ff, /* inner right cyan broad */
+    //     0 0 50px #fff,            /* outer white */
+    //     -10px 0 80px #f0f,        /* outer left magenta */
+    //     10px 0 80px #0ff;         /* outer right cyan */
 }
 
 .result-image-container {
@@ -48,4 +75,9 @@ main {
   width: 100%;
 }
 
-
+.add-button {
+  margin-top: 20px;
+  background-color: $primary-color;
+  font-size: 20px;
+  color: white;
+}

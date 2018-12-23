@@ -46,6 +46,8 @@ export class NewSessionComponent implements OnInit {
 
   chosenPlayer;
 
+  error: string = '';
+
   constructor(
     private collectionService: CollectionService,
     private playersService: PlayersService,
@@ -114,8 +116,9 @@ export class NewSessionComponent implements OnInit {
   }
 
   addGameResult() {
+    this.error = '';
     let player = {};
-    // player is either be a selected player ...
+    // player is either a selected player ...
     if (this.players.find(player => player.username == this.playerNameControl.value)) {
       player['kind'] = this.chosenPlayer.kind;
       player['info'] = this.chosenPlayer.id;
@@ -125,13 +128,34 @@ export class NewSessionComponent implements OnInit {
     } else {
       player['username'] = this.playerNameControl.value;
     }
-    let score = this.scoreControl.value;
-    this.gameResults.push({ player, score });
-    this.playerNameControl.patchValue('');
-    this.scoreControl.reset();
+
+    // check if player is already added (disallow duplicates)
+    if (this.gameResults.find(gameResult => gameResult.player.username === player['username'])) {
+      this.error = 'Duplicate username';
+      this.playerNameControl.patchValue('');
+      this.scoreControl.reset();
+    } else {
+      let score = this.scoreControl.value;
+      if (score == null) {
+        this.error = 'Score cannot be empty';
+      } else {
+        this.gameResults.push({ player, score });
+        this.playerNameControl.patchValue('');
+        this.scoreControl.reset();
+      }
+    }
+  }
+
+  removeGameResult(result) {
+    this.error = '';
+    let newResults = this.gameResults.filter(gameResult => {
+      return gameResult.player.username !== result.player.username;
+    });
+    this.gameResults = newResults;
   }
 
   submitSession() {
+    this.error = '';
     // check if guest is impromptu (add to db if new)
     this.checkForNewGuests()
       .subscribe(newGuests => {
@@ -169,7 +193,8 @@ export class NewSessionComponent implements OnInit {
             })
 
         } else {
-          console.log('No game chosen')
+          this.error = 'No game chosen';
+          // console.log('No game chosen')
         }
       })
   } 

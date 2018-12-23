@@ -25,8 +25,10 @@ export class RegistrationService {
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    return throwError(
-      'Something bad happened; please try again later.');
+    if (error.error.message.startsWith('E11000')) {
+      return throwError('Username already taken');
+    }
+    return throwError(error.error.message);
   };
 
   register(data) {

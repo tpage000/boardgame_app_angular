@@ -1,3 +1,9 @@
+<header>
+  <h1 class='mat-h1'>
+    New Session
+  </h1>
+</header>
+
 <main>
 <form class="example-form">
   <!-- CHOOSE GAME FROM COLLECTION -->
@@ -33,7 +39,11 @@
     <div *ngFor='let result of gameResults' class='added-player-info'>
       <div class='added-player added-player-name'>{{ result.player.username }}</div>
       <div class='added-player added-player-score'>{{ result.score }}</div>
-      <div class='added-player remove-player'><mat-icon>remove</mat-icon></div>
+      <!-- <div class='added-player remove-player'><mat-icon>remove</mat-icon></div> -->
+      <button type="button" (click)='removeGameResult(result)' mat-flat-button 
+        class='added-player remove-player'>
+        <mat-icon>remove</mat-icon>
+      </button>
     </div>
   </div>
 
@@ -52,12 +62,11 @@
         </span>
       </mat-option>
     </mat-autocomplete>
-
     <mat-form-field appearance='fill' class='add-result-field score-field'>
       <input type='number' placeholder='Score' matInput [formControl]='scoreControl'>
     </mat-form-field>
-
-    <button type="button" (click)='addGameResult()' mat-flat-button class='add-result-button'>
+    <button type="button" (click)='addGameResult()' mat-flat-button 
+      class='add-result-button'>
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -71,5 +80,7 @@
 
   <button mat-button type="button" (click)='submitSession()'>Submit Session</button>
 </form>
+
+<h3 *ngIf="error" class='error mat-error mat-typography'>{{ error }}</h3>
 
 </main>

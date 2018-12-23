@@ -1,14 +1,19 @@
-<main>
-<form class="example-form">
+<header>
+  <h1 class='mat-h1'>
+    New Game
+  </h1>
+</header>
 
-  <mat-form-field class="example-full-width" appearance='outline'>
+<main>
+
+<form class="form">
+  <mat-form-field class="title-form-field" appearance='outline'>
     <input type="text" placeholder="Search for a title on boardgamegeek" 
            #searchBox
            matInput 
            [formControl]="searchControl" 
            [matAutocomplete]="searchAuto" 
            (keyup)="search(searchBox.value)">
-
     <mat-autocomplete #searchAuto="matAutocomplete">
       <mat-option *ngFor="let option of searchOptions | async" [value]="option.name" 
         (click)='getGameByBGGId(option.id)'>
@@ -16,26 +21,27 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-
 </form>
 
 <p class='or'><small class='mat-typography'>or</small></p>
 
-<form (ngSubmit)="getGameByBGGId(bggIdInput.value)" class="example-form">
-  <mat-form-field class="example-full-width" appearance='outline'>
+<form (ngSubmit)="getGameByBGGId(bggIdInput.value)" class="form">
+  <mat-form-field class="id-form-field" appearance='outline'>
     <input #bggIdInput type="text" placeholder="Enter a boardgamegeek game id" matInput 
     [formControl]="bggIdControl">
   </mat-form-field>
-
   <button mat-button type="submit">Enter</button>
 </form>
 
-<div *ngIf="gameResult" matTooltip="CLICK TO ADD THIS AMAZING GAME" class='game-result'
-  (click)="addToCollection()">
+<div *ngIf="gameResult" class='game-result' (click)="addToCollection()">
   <p class='mat-typography'>{{gameResult.name}} {{gameResult.yearPublished}}</p>
   <div class='result-image-container'>
     <img src={{gameResult.image}} />
   </div>
+  <button matTooltip="Add this game to your collection" 
+    mat-button class='add-button'>
+    Add
+  </button>
 </div>
 
 </main>

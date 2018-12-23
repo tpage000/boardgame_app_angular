@@ -28,6 +28,10 @@ export class AccountsComponent implements OnInit {
 
   avatars = AVATARS;
 
+  error: string = '';
+
+  regError: string = '';
+
   constructor(
     private registrationService: RegistrationService, 
     private router: Router,
@@ -68,15 +72,32 @@ export class AccountsComponent implements OnInit {
   }
 
   submitRegistration() {
-    this.registrationService.register(this.registrationForm.value)
-      .subscribe(data => window.location.href = '/account');
+    this.regError = '';
+    if (this.registrationForm.valid) {
+      this.registrationService.register(this.registrationForm.value)
+        .subscribe(data => {
+          window.location.href = '/account';
+        }, err => {
+          this.regError = err;
+        });
+    } else {
+      this.regError = 'Missing or invalid entries';
+    }
   }
   
   submitLogin() {
-    this.authService.login(this.loginForm.value)
-      .subscribe(data => {
-        this.router.navigate(['/sessions']);
-      })
+    this.error = '';
+    if (this.loginForm.valid) {
+      console.log('valid form')
+      this.authService.login(this.loginForm.value)
+        .subscribe(data => {
+          this.router.navigate(['/sessions']);
+        }, err => {
+          this.error = err;
+        })
+    } else {
+      this.error = 'Missing or invalid entries';
+    }
   }
 
   updateAvatar(avatar) {

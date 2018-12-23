@@ -6,6 +6,10 @@ nav {
     background: $primary-color;
     display: flex;
     justify-content: space-around;
+    .app-icon {
+      width: 40px;
+      margin-top: 20px;
+    }
     button {
       font-size: 30px;
       padding: 15px;

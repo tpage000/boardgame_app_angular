@@ -1,8 +1,9 @@
 <main>
-  <h1 class='mat-h1'>
-    {{ friend.username }}'s latest sessions
-  </h1>
+<h1 class='mat-h1'>
+  {{ friend.username }}'s latest sessions
+</h1>
 <div class='sessions-container'>
+  <p *ngIf='sessions.length === 0'>No sessions yet</p>
   <div *ngFor='let session of sessions' class="session-container">
       <p class='mat-typography date'>{{session.date | date}}</p>
       <h3 class='mat-h3 title'>
@@ -27,8 +28,9 @@
   </div>
 </div>
 
-  <h1 class='mat-h1'>{{ friend.username }}'s latest games</h1>
+<h1 class='mat-h1'>{{ friend.username }}'s latest games</h1>
 <div class='collection-container'>
+  <p *ngIf='games.length === 0'>No games yet</p>
   <div *ngFor='let game of games' class="game-container">
       <p class='mat-typography'>
         {{
