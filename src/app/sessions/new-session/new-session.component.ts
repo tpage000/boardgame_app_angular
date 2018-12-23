@@ -130,14 +130,20 @@ export class NewSessionComponent implements OnInit {
     }
 
     // check if player is already added (disallow duplicates)
-    if (this.gameResults.find(gameResult => gameResult.player.username === player.username)) {
+    if (this.gameResults.find(gameResult => gameResult.player.username === player['username'])) {
       this.error = 'Duplicate username';
+      this.playerNameControl.patchValue('');
+      this.scoreControl.reset();
     } else {
       let score = this.scoreControl.value;
-      this.gameResults.push({ player, score });
+      if (score == null) {
+        this.error = 'Score cannot be empty';
+      } else {
+        this.gameResults.push({ player, score });
+        this.playerNameControl.patchValue('');
+        this.scoreControl.reset();
+      }
     }
-    this.playerNameControl.patchValue('');
-    this.scoreControl.reset();
   }
 
   removeGameResult(result) {
@@ -149,6 +155,7 @@ export class NewSessionComponent implements OnInit {
   }
 
   submitSession() {
+    this.error = '';
     // check if guest is impromptu (add to db if new)
     this.checkForNewGuests()
       .subscribe(newGuests => {
@@ -186,7 +193,8 @@ export class NewSessionComponent implements OnInit {
             })
 
         } else {
-          console.log('No game chosen')
+          this.error = 'No game chosen';
+          // console.log('No game chosen')
         }
       })
   } 
