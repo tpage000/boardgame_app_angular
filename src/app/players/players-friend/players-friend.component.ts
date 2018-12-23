@@ -24,7 +24,6 @@ export class PlayersFriendComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.playerService.getOneFriend(params['id'])
         .subscribe(res => {
-          console.log(res);
           this.friend = res['friend'];
           this.games = res['games'];
           this.sessions = res['sessions'];
