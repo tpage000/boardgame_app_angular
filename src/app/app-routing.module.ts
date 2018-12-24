@@ -11,6 +11,9 @@ import { NewSessionComponent } from './sessions/new-session/new-session.componen
 import { NewGameComponent } from './collection/new-game/new-game.component';
 import { PlayersFriendComponent } from './players/players-friend/players-friend.component';
 
+import { GameDetailComponent } from './collection/game-detail/game-detail.component'; 
+import { SessionDetailComponent } from './sessions/session-detail/session-detail.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -26,6 +29,14 @@ const routes: Routes = [
     component: SessionsComponent
   },
   {
+    path: 'sessions/:id',
+    component: SessionDetailComponent
+  },
+  {
+    path: 'sessions/new',
+    component: NewSessionComponent
+  },
+  {
     path: 'stats',
     component: StatsComponent
   },
@@ -34,8 +45,8 @@ const routes: Routes = [
     component: AccountsComponent
   },
   {
-    path: 'sessions/new',
-    component: NewSessionComponent
+    path: 'games/:id',
+    component: GameDetailComponent
   },
   {
     path: 'games/new',

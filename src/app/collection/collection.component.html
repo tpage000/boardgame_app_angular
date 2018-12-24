@@ -13,7 +13,7 @@
 </header>
 
 <div class='collection-container'>
-  <div *ngFor='let game of collection' class="game-container">
+  <div *ngFor='let game of collection' routerLink="/games/{{game._id}}"class="game-container">
       <p class='mat-typography'>
         {{
           (game.name.length > 25) 

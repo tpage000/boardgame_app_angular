@@ -10,7 +10,7 @@
 </header>
 
 <div class='sessions-container'>
-  <div *ngFor='let session of sessions' class="session-container">
+  <div *ngFor='let session of sessions' routerLink='/sessions/{{session._id}}' class="session-container">
       <p class='mat-typography date'>{{session.date | date}}</p>
       <h3 class='mat-h3 title'>
         {{
