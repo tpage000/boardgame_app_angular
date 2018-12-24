@@ -3,10 +3,19 @@
     <!-- <div> -->
     <!--   <img src='/assets/icons/board-game-icon.jpg' class='app-icon' /> -->
     <!-- </div> -->
-    <button mat-button routerLink='/sessions'>Sessions</button>
-    <button mat-button routerLink='/games'>Games</button>
-    <button mat-button routerLink='/players'>Players</button>
-    <!-- <button mat-button routerLink='/stats'>Stats</button> -->
+    <button mat-button routerLink='/sessions'>
+      <span class='nav-text'> Sessions</span>
+      <mat-icon class='nav-icon'>dashboard</mat-icon>
+    </button>
+    <button mat-button routerLink='/games'>
+      <span class='nav-text'>Games</span>
+      <mat-icon class='nav-icon'>select_all</mat-icon>
+    </button>
+    <button mat-button routerLink='/players'>
+      <span class='nav-text'>Players</span>
+      <mat-icon class='nav-icon'>group</mat-icon>
+    </button>
+      <!-- <button mat-button routerLink='/stats'>Stats</button> -->
     <button mat-button routerLink='/account'>
       <mat-icon class='account-icon'>account_circle</mat-icon>
     </button>

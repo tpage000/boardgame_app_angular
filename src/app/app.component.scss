@@ -21,3 +21,23 @@ nav {
     }
   }
 }
+
+.nav-icon {
+  display: none;
+  font-size: 40px;
+  margin-top: -20px;
+}
+
+.nav-text {
+  display: inline-block;
+}
+
+
+@media screen and (max-width: 500px) {
+  .nav-text {
+    display: none;
+  }
+  .nav-icon {
+    display: inline-block;
+  }
+}
