@@ -14,7 +14,7 @@ import { PlayersFriendComponent } from './players/players-friend/players-friend.
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/sessions',
+    redirectTo: '/account',
     pathMatch: 'full'
   },
   {
