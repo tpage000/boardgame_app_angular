@@ -34,6 +34,7 @@ header {
 
 .game-container {
   // border: 3px solid whitesmoke;
+  // border: 1px solid red;
   width: 220px;
   display: flex;
   flex-direction: column;
@@ -53,3 +54,13 @@ header {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .game-container {
+    width: 40%;
+  }
+  .game-image-container {
+    img {
+      width: 100%;
+    }
+  }
+}
