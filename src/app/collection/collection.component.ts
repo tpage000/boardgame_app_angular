@@ -16,6 +16,14 @@ export class CollectionComponent implements OnInit {
     this.collectionService.getCollection()
       .subscribe(res => {
         this.collection = res;
+        this.collection.sort((a, b) => {
+          if (a.createdAt > b.createdAt)
+            return -1;
+          if (a.createdAt < b.createdAt)
+            return 1;
+          return 0;
+        });
+        console.log(this.collection);
       })
   }
 
