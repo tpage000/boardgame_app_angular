@@ -76,7 +76,11 @@ export class AccountsComponent implements OnInit {
     if (this.registrationForm.valid) {
       this.registrationService.register(this.registrationForm.value)
         .subscribe(data => {
-          window.location.href = '/account';
+          this.registrationForm.reset();
+          this.userService.getSelf()
+            .subscribe(res => {
+              this.user = res;
+            })
         }, err => {
           this.regError = err;
         });
@@ -88,10 +92,13 @@ export class AccountsComponent implements OnInit {
   submitLogin() {
     this.error = '';
     if (this.loginForm.valid) {
-      console.log('valid form')
       this.authService.login(this.loginForm.value)
         .subscribe(data => {
-          this.router.navigate(['/sessions']);
+          this.loginForm.reset();
+          this.userService.getSelf()
+            .subscribe(res => {
+              this.user = res;
+            })
         }, err => {
           this.error = err;
         })
@@ -110,9 +117,7 @@ export class AccountsComponent implements OnInit {
   logout() {
     this.authService.logout()
       .subscribe(res => {
-        // console.log(res);
-        // console.log(sessionStorage);
-        window.location.href = '/account';
-      })
+        this.user = null;
+      });
   }
 }
