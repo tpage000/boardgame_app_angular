@@ -25,16 +25,24 @@ const routes: Routes = [
     component: CollectionComponent
   },
   {
+    path: 'games/new',
+    component: NewGameComponent
+  },
+  {
+    path: 'games/:id',
+    component: GameDetailComponent
+  },
+  {
     path: 'sessions',
     component: SessionsComponent
   },
   {
-    path: 'sessions/:id',
-    component: SessionDetailComponent
-  },
-  {
     path: 'sessions/new',
     component: NewSessionComponent
+  },
+  {
+    path: 'sessions/:id',
+    component: SessionDetailComponent
   },
   {
     path: 'stats',
@@ -43,14 +51,6 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountsComponent
-  },
-  {
-    path: 'games/:id',
-    component: GameDetailComponent
-  },
-  {
-    path: 'games/new',
-    component: NewGameComponent
   },
   {
     path: 'players',
