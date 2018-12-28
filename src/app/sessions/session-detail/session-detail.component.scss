@@ -13,5 +13,28 @@ main {
   display: flex;
   flex-direction: row;
 }
-.game-result {
+
+.comments-container {
+  margin-top: 20px;
+}
+
+.comments-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-style: italic;
+  .edit {
+    margin-left: 10px;
+    cursor: pointer;
+  }
+}
+
+.comments {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.form-buttons {
 }

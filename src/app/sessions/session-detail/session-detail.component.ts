@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SessionDetailService } from './session-detail.service';
 import { ActivatedRoute } from '@angular/router';
 
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-session-detail',
@@ -13,6 +14,10 @@ export class SessionDetailComponent implements OnInit {
   id: String;
 
   session;
+
+  editingComments: boolean = false;
+
+  commentsCtrl = new FormControl();
 
   constructor(
     private sessionService: SessionDetailService,
@@ -26,11 +31,27 @@ export class SessionDetailComponent implements OnInit {
       this.sessionService.getSession(this.id)
         .subscribe(data => {
           this.session = data;
+          this.commentsCtrl.value = this.session.comments;
           console.log(this.session);
         }, err => {
           console.log(err);
         })
     });
+  }
+
+  editComments() {
+    this.editingComments = true;
+  }
+
+  submitComments() {
+    console.log(this.commentsCtrl.value)
+    this.sessionService.submitComments(this.id, this.commentsCtrl.value)
+      .subscribe(updated => {
+        this.session.comments = updated.comments;
+        this.editingComments = false;
+      }, err => {
+        console.log(err);
+      })
   }
 
 }

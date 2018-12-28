@@ -13,6 +13,21 @@
     <p>{{result.player.info.username}}</p>
     </div>
   </div>
-  <p>{{session.comments}}<p>
+  <div class='comments-container'>
+    <div class='comments-title'>
+      <p>Comments</p>
+      <div (click)='editComments()' class='edit'><mat-icon>edit</mat-icon></div>
+    </div>
+    <p class='comments' *ngIf='!editingComments'>{{session.comments}}<p>
+    <form (submit)='submitComments()' *ngIf='editingComments' class='comment-edit-box'>
+      <mat-form-field>
+        <textarea matInput [formControl]='commentsCtrl' ></textarea>
+      </mat-form-field>
+      <div class='form-buttons'>
+        <button mat-button>Submit</button>
+        <button type='button' mat-button (click)='editingComments = false'>Cancel</button>
+      </div>
+    </form>
+  </div>
   <p>{{session.images}}</p>
 </main>

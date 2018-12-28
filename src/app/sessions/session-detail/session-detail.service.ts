@@ -28,4 +28,11 @@ export class SessionDetailService {
     console.log(id);
     return this.http.get(`${env.baseUrl}/sessions/${id}`)
   }
+
+  submitComments(id, comments) {
+    const data = { comments }
+    // console.log(data)
+    return this.http.put(`${env.baseUrl}/sessions/${id}?updateComments=true`, data)
+  }
 }
+
