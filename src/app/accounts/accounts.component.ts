@@ -32,6 +32,8 @@ export class AccountsComponent implements OnInit {
 
   regError: string = '';
 
+  loading: boolean = false;
+
   constructor(
     private registrationService: RegistrationService, 
     private router: Router,
@@ -74,15 +76,18 @@ export class AccountsComponent implements OnInit {
   submitRegistration() {
     this.regError = '';
     if (this.registrationForm.valid) {
+      this.loading = true;
       this.registrationService.register(this.registrationForm.value)
         .subscribe(data => {
           this.registrationForm.reset();
           this.userService.getSelf()
             .subscribe(res => {
               this.user = res;
+              this.loading = false;
             })
         }, err => {
           this.regError = err;
+          this.loading = false;
         });
     } else {
       this.regError = 'Missing or invalid entries';
@@ -92,14 +97,17 @@ export class AccountsComponent implements OnInit {
   submitLogin() {
     this.error = '';
     if (this.loginForm.valid) {
+      this.loading = true;
       this.authService.login(this.loginForm.value)
         .subscribe(data => {
           this.loginForm.reset();
           this.userService.getSelf()
             .subscribe(res => {
+              this.loading = false;
               this.user = res;
             })
         }, err => {
+          this.loading = false;
           this.error = err;
         })
     } else {

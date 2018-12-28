@@ -2,6 +2,8 @@
 
   <div *ngIf='!authService.isLoggedIn()'>
 
+    <div *ngIf='loading'><mat-spinner></mat-spinner></div>
+    <div *ngIf='!loading'>
     <div *ngIf='!register' class='login'>
       <h1 class='mat-h1'>Log In</h1>
       <form [formGroup]="loginForm" (ngSubmit)='submitLogin()'>
@@ -63,6 +65,7 @@
       back to login
       </p>
     </div>
+    </div> <!-- !loading -->
   </div>
 
   <div *ngIf='authService.isLoggedIn()' >

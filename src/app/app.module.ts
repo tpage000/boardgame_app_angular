@@ -11,7 +11,7 @@ import {
   MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, 
   MatTreeModule, MatToolbarModule, MatFormFieldModule, MatInputModule, 
   MatRadioModule, MatAutocompleteModule, MatTooltipModule, MatDatepickerModule, 
-  MatNativeDateModule, MatListModule, MatProgressSpinner
+  MatNativeDateModule, MatListModule, MatProgressSpinnerModule
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -65,6 +65,7 @@ import { SessionDetailComponent } from './sessions/session-detail/session-detail
     MatAutocompleteModule,
     MatTooltipModule,
     MatDatepickerModule,
+    MatProgressSpinnerModule,
     MatNativeDateModule,
     MatListModule,
     FormsModule,
