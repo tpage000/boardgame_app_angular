@@ -40,10 +40,9 @@
       <div class='added-player added-player-name'>{{ result.player.username }}</div>
       <div class='added-player added-player-score'>{{ result.score }}</div>
       <!-- <div class='added-player remove-player'><mat-icon>remove</mat-icon></div> -->
-      <button type="button" (click)='removeGameResult(result)' mat-flat-button 
-        class='added-player remove-player'>
+      <div (click)='removeGameResult(result)' class='added-player remove-player'>
         <mat-icon>remove</mat-icon>
-      </button>
+      </div>
     </div>
   </div>
 
@@ -65,10 +64,9 @@
     <mat-form-field appearance='fill' class='add-result-field score-field'>
       <input type='number' placeholder='Score' matInput [formControl]='scoreControl'>
     </mat-form-field>
-    <button type="button" (click)='addGameResult()' mat-flat-button 
-      class='add-result-button'>
+    <div (click)='addGameResult()' class='add-result-button'>
       <mat-icon>add</mat-icon>
-    </button>
+    </div>
   </div>
 
   <!-- DATE -->

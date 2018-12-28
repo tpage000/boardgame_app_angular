@@ -11,7 +11,7 @@ import {
   MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, 
   MatTreeModule, MatToolbarModule, MatFormFieldModule, MatInputModule, 
   MatRadioModule, MatAutocompleteModule, MatTooltipModule, MatDatepickerModule, 
-  MatNativeDateModule, MatListModule
+  MatNativeDateModule, MatListModule, MatProgressSpinner
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';

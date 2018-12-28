@@ -91,7 +91,12 @@ main {
     margin-top: 10px;
     margin-left: 10px;
     height: 60px;
-    width: 40px;
+    width: 80px;
+    text-align: center;
+    line-height: 75px;
+    cursor: pointer;
+    color: white;
+    vertical-align: middle;
   }
 }
 
@@ -119,8 +124,8 @@ main {
       margin-left: 22px;
     }
     .remove-player {
-      width: 88px;
-      height: 60px;
+      width: 80px;
+      height: 20px;
       margin-left: 22px;
       background-color: lightblue;
       color: white;
@@ -165,12 +170,34 @@ main {
     }
     .score-field {
       // font-size: 10px;
-      width: 20%;
+      width: 25%;
       margin: 0px;
     }
     .add-result-button {
       // width: !important 10px;
       margin: 0px;
+      width: 15%;
+    }
+  }
+  .added-players {
+    width: 100%;
+    .added-player-info {
+      margin: 0 auto;
+      margin-bottom: 10px;
+      width: 95%;
+      padding: 0px;
+      .added-player-name, .added-player-score, .remove-player {
+        margin-left: 0px;
+      }
+      .added-player-name {
+        width: 60%;
+      }
+      .added-player-score {
+        width: 25%;
+      }
+      .remove-player {
+        width: 15%;
+      }
     }
   }
 }
