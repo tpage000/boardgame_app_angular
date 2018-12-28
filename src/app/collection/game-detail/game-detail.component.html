@@ -1,12 +1,13 @@
 <main>
   <h1>{{game.name}}</h1>
-  <p>Plays {{game.plays}}</p>
-  <div>
+  <p class='play-count'>Plays {{game.plays}}</p>
+  <div class='game-image-container'>
     <img src={{game.image}} />
   </div>
-  <p>{{game.description}}<p>
-  <p>Max players {{game.maxPlayers}}</p>
+  <!-- <div class='player-count'> -->
   <p>Min players {{game.minPlayers}}</p>
+  <p>Max players {{game.maxPlayers}}</p>
+  <!-- </div> -->
   <p>Acquired {{game.acquired | date}}</p>
   <p>Artists {{game.artists}}</p>
   <p>BGG rating {{game.bggRating}}</p>
@@ -14,4 +15,5 @@
   <p>Expansions {{game.expansions}}</p>
   <p>Mechanics {{game.mechanics}}</p>
   <p>Publishers {{ game.publishers }}</p>
+  <p class='description'>{{game.description}}<p>
 </main>

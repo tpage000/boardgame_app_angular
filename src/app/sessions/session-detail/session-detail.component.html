@@ -4,12 +4,14 @@
   <div>
     <img src={{session.game.thumbnail}} />
   </div>
-  <div *ngFor='let result of session.gameresults'>
-    <p>{{result.score}}</p>
+  <div class='results-container'>
+    <div *ngFor='let result of session.gameresults' class='game-result'>
+      <p>{{result.score}}</p>
     <div>
       <img src="{{result.player.info.avatar}}" />
     </div>
     <p>{{result.player.info.username}}</p>
+    </div>
   </div>
   <p>{{session.comments}}<p>
   <p>{{session.images}}</p>
