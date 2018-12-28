@@ -3,6 +3,12 @@
   // margin: 0px;
 }
 
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .half-container {
   text-align: center;
   display: flex;
@@ -10,11 +16,6 @@
   flex-direction: column;
   align-items: center;
   width: 50%;
-}
-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 
 h1 {
@@ -30,7 +31,7 @@ h1 {
 .game-image-container {
   // border: 1px solid green;
   height: 400px;
-  width: 95%;
+  // width: 100%;
   img {
     height: 100%;
   }
@@ -86,4 +87,20 @@ h1 {
 }
 
 .description {
+}
+
+@media screen and (max-width: 1000px) {
+  .half-container {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .game-image-container {
+    height: auto;
+    width: 95%;
+    img {
+      width: 100%;
+    }
+  }
 }
