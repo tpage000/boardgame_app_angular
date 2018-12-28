@@ -31,7 +31,7 @@ export class SessionDetailComponent implements OnInit {
       this.sessionService.getSession(this.id)
         .subscribe(data => {
           this.session = data;
-          this.commentsCtrl.value = this.session.comments;
+          this.commentsCtrl.setValue(this.session['comments']);
           console.log(this.session);
         }, err => {
           console.log(err);
@@ -47,7 +47,7 @@ export class SessionDetailComponent implements OnInit {
     console.log(this.commentsCtrl.value)
     this.sessionService.submitComments(this.id, this.commentsCtrl.value)
       .subscribe(updated => {
-        this.session.comments = updated.comments;
+        this.session['comments'] = updated['comments'];
         this.editingComments = false;
       }, err => {
         console.log(err);
