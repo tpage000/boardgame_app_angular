@@ -1,19 +1,31 @@
 <main>
+<div class='half-container'>
   <h1>{{game.name}}</h1>
   <p class='play-count'>Plays {{game.plays}}</p>
   <div class='game-image-container'>
     <img src={{game.image}} />
   </div>
-  <!-- <div class='player-count'> -->
-  <p>Min players {{game.minPlayers}}</p>
-  <p>Max players {{game.maxPlayers}}</p>
-  <!-- </div> -->
-  <p>Acquired {{game.acquired | date}}</p>
-  <p>Artists {{game.artists}}</p>
-  <p>BGG rating {{game.bggRating}}</p>
-  <p>Designers {{game.designers}}</p>
-  <p>Expansions {{game.expansions}}</p>
-  <p>Mechanics {{game.mechanics}}</p>
-  <p>Publishers {{ game.publishers }}</p>
+  <div class='acquired-container'>
+    <p class='acquired'>Acquired {{game.acquired | date}}</p>
+    <div class='acquired-btn'>Change</div>
+  </div>
+  <div class='player-max-min'>
+    <p>Min players {{game.minPlayers}}</p>
+    <p>Max players {{game.maxPlayers}}</p>
+  </div>
+  <!-- <p>BGG rating {{game.bggRating}}</p> -->
+  <p>Designers: {{game.designers}}</p>
+  <p>Artists: {{game.artists}}</p>
+  <p>Mechanics: {{game.mechanics}}</p>
+  <p>Publishers: {{ game.publishers }}</p>
   <p class='description'>{{game.description}}<p>
+  <div class='expansions-container'>
+    <p>Expansions:</p>
+    <div>
+      <div *ngFor='let exp of game.expansions' class='expansion'>
+        <p>{{ exp.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
