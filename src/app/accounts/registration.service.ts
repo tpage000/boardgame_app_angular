@@ -32,7 +32,7 @@ export class RegistrationService {
   };
 
   register(data) {
-    return this.http.post(`${env.baseUrl}/users`, data, httpOptions)
+    return this.http.post(`${env.baseUrl}/auth/register`, data, httpOptions)
       .pipe(
         map(res => {
           sessionStorage.setItem('token', res['token']);

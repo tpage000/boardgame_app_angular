@@ -28,7 +28,7 @@ export class PlayersService {
   }
 
   getFriendsAndGuestsAndSelf() {
-    return this.http.get(`${env.baseUrl}/friends/allplayers`);
+    return this.http.get(`${env.baseUrl}/friends/allrelated`);
   }
 
   addToFriends(id) {
@@ -37,7 +37,6 @@ export class PlayersService {
   }
 
   addToGuests(guest) {
-    // return of(guest);
     return this.http.post(`${env.baseUrl}/guests`, guest)
   }
 

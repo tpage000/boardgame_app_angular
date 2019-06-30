@@ -29,7 +29,7 @@ export class AuthenticationService {
   };
 
   login(data) {
-    return this.http.post(`${env.baseUrl}/users/login`, data, httpOptions)
+    return this.http.post(`${env.baseUrl}/auth/login`, data, httpOptions)
       .pipe(
         map(res => {
           sessionStorage.setItem('token', res['token']);

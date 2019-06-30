@@ -1,73 +1,61 @@
 <div class='container'>
-
   <div *ngIf='!authService.isLoggedIn()'>
-
     <div *ngIf='loading'><mat-spinner></mat-spinner></div>
     <div *ngIf='!loading'>
-    <div *ngIf='!register' class='login'>
-      <h1 class='mat-h1'>Log In</h1>
-      <form [formGroup]="loginForm" (ngSubmit)='submitLogin()'>
-        <mat-form-field>
-          <input matInput placeholder='username' formControlName='username' required>
-          <mat-error *ngIf="loginUsername.invalid">
-            {{ getError('loginUsername') }}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder='password' formControlName='password' [type]='password' required>
-          <mat-error *ngIf="loginPassword.invalid">
-            {{ getError('loginPassword') }}
-          </mat-error>
-        </mat-form-field>
-
-        <button mat-button type="submit" class='submit'>Log In</button>
-      </form>
-
-      <h3 *ngIf="error" class='error mat-error mat-typography'>{{ error }}</h3>
-
-      <p style='text-decoration: underline; cursor:pointer' (click)='register = true'>
-      register
-      </p>
-    </div>
-
-    <div *ngIf='register' class='register'>
-      <h1 class='mat-h1'>Register</h1>
-
-      <form [formGroup]="registrationForm" (ngSubmit)='submitRegistration()'>
-        <mat-form-field>
-          <input matInput placeholder='username' formControlName='username' required>
-          <mat-error *ngIf="registerUsername.invalid">
-            {{ getError('registerUsername') }}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder='email' formControlName='email' required>
-          <mat-error *ngIf="registerEmail.invalid">
-            {{ getError('registerEmail') }}
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder='password' formControlName='password' [type]='password' required>
-          <mat-error *ngIf="registerPassword.invalid">
-            {{ getError('registerPassword') }}
-          </mat-error>
-        </mat-form-field>
-
-        <button mat-button type="submit" class='submit'>Register</button>
-      </form>
-      <h3 *ngIf="regError" class='error mat-error mat-typography'>
-        {{ regError }}
-      </h3>
-      <p style='text-decoration: underline; cursor:pointer' (click)='register = false'>
-      back to login
-      </p>
-    </div>
+      <div *ngIf='!register' class='login'>
+        <h1 class='mat-h1'>Log In</h1>
+        <form [formGroup]="loginForm" (ngSubmit)='submitLogin()'>
+          <mat-form-field>
+            <input matInput placeholder='username' formControlName='username' required>
+            <mat-error *ngIf="loginUsername.invalid">
+              {{ getError('loginUsername') }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder='password' formControlName='password' [type]='password' required>
+            <mat-error *ngIf="loginPassword.invalid">
+              {{ getError('loginPassword') }}
+            </mat-error>
+          </mat-form-field>
+          <button mat-button type="submit" class='submit'>Log In</button>
+        </form>
+        <h3 *ngIf="error" class='error mat-error mat-typography'>{{ error }}</h3>
+        <p style='text-decoration: underline; cursor:pointer' (click)='register = true'>
+        register
+        </p>
+      </div>
+      <div *ngIf='register' class='register'>
+        <h1 class='mat-h1'>Register</h1>
+        <form [formGroup]="registrationForm" (ngSubmit)='submitRegistration()'>
+          <mat-form-field>
+            <input matInput placeholder='username' formControlName='username' required>
+            <mat-error *ngIf="registerUsername.invalid">
+              {{ getError('registerUsername') }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder='email' formControlName='email' required>
+            <mat-error *ngIf="registerEmail.invalid">
+              {{ getError('registerEmail') }}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder='password' formControlName='password' [type]='password' required>
+            <mat-error *ngIf="registerPassword.invalid">
+              {{ getError('registerPassword') }}
+            </mat-error>
+          </mat-form-field>
+          <button mat-button type="submit" class='submit'>Register</button>
+        </form>
+        <h3 *ngIf="regError" class='error mat-error mat-typography'>
+          {{ regError }}
+        </h3>
+        <p style='text-decoration: underline; cursor:pointer' (click)='register = false'>
+        back to login
+        </p>
+      </div>
     </div> <!-- !loading -->
   </div>
-
   <div *ngIf='authService.isLoggedIn()' >
     <button mat-button (click)='logout()' class='logout'>Log out</button>
     <div class='user-info'>
@@ -83,5 +71,4 @@
       </div>
     </div>
   </div>
-
 </div>
